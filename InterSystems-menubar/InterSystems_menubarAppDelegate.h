@@ -1,6 +1,10 @@
 #import <Cocoa/Cocoa.h>
+#import "CControl.h"
 
 @interface InterSystems_menubarAppDelegate : NSObject <NSApplicationDelegate> {
+    IBOutlet NSMenu *instancesMenu;
+    NSStatusItem * instancesItem;
+    
 @private
     NSWindow *window;
     NSPersistentStoreCoordinator *__persistentStoreCoordinator;
@@ -15,5 +19,6 @@
 @property (nonatomic, retain, readonly) NSManagedObjectContext *managedObjectContext;
 
 - (IBAction)saveAction:sender;
+- (void)awakeFromNib;
 
 @end

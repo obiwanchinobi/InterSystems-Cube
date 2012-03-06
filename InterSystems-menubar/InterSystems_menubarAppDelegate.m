@@ -7,6 +7,11 @@
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
     // Insert code here to initialize your application
+    NSMutableArray *instancesList;
+    instancesList = [[NSMutableArray alloc] init];
+    instancesList = [CControl getInstances];
+    
+    NSLog(@"%lu",[instancesList count]);
 }
 
 /**
@@ -181,8 +186,19 @@
     return NSTerminateNow;
 }
 
+-(void)awakeFromNib {
+    NSImage *instancesImage = [NSImage imageNamed:@"cube_16.png"];
+    instancesItem = [[[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength] retain];
+    [instancesItem setMenu:instancesMenu];
+    [instancesItem setImage:instancesImage];
+    [instancesItem setToolTip:@"Manage InterSystems Instances"];
+    [instancesItem setHighlightMode:YES];
+}
+
 - (void)dealloc
 {
+    [instancesItem release];
+    
     [__managedObjectContext release];
     [__persistentStoreCoordinator release];
     [__managedObjectModel release];
