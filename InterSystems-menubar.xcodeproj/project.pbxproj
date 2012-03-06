@@ -1,0 +1,305 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		BFF889471505E53C007B4A9B /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFF889461505E53C007B4A9B /* Cocoa.framework */; };
+		BFF889511505E53C007B4A9B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BFF8894F1505E53C007B4A9B /* InfoPlist.strings */; };
+		BFF889541505E53C007B4A9B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BFF889531505E53C007B4A9B /* main.m */; };
+		BFF889571505E53C007B4A9B /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = BFF889551505E53C007B4A9B /* Credits.rtf */; };
+		BFF8895A1505E53C007B4A9B /* InterSystems_menubarAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BFF889591505E53C007B4A9B /* InterSystems_menubarAppDelegate.m */; };
+		BFF8895D1505E53C007B4A9B /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = BFF8895B1505E53C007B4A9B /* MainMenu.xib */; };
+		BFF889601505E53C007B4A9B /* InterSystems_menubar.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BFF8895E1505E53C007B4A9B /* InterSystems_menubar.xcdatamodeld */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		BFF889421505E53C007B4A9B /* InterSystems-menubar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "InterSystems-menubar.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BFF889461505E53C007B4A9B /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		BFF889491505E53C007B4A9B /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		BFF8894A1505E53C007B4A9B /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		BFF8894B1505E53C007B4A9B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		BFF8894E1505E53C007B4A9B /* InterSystems-menubar-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "InterSystems-menubar-Info.plist"; sourceTree = "<group>"; };
+		BFF889501505E53C007B4A9B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		BFF889521505E53C007B4A9B /* InterSystems-menubar-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "InterSystems-menubar-Prefix.pch"; sourceTree = "<group>"; };
+		BFF889531505E53C007B4A9B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		BFF889561505E53C007B4A9B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		BFF889581505E53C007B4A9B /* InterSystems_menubarAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InterSystems_menubarAppDelegate.h; sourceTree = "<group>"; };
+		BFF889591505E53C007B4A9B /* InterSystems_menubarAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InterSystems_menubarAppDelegate.m; sourceTree = "<group>"; };
+		BFF8895C1505E53C007B4A9B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		BFF8895F1505E53C007B4A9B /* InterSystems_menubar.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = InterSystems_menubar.xcdatamodel; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BFF8893F1505E53C007B4A9B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BFF889471505E53C007B4A9B /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		BFF889371505E53C007B4A9B = {
+			isa = PBXGroup;
+			children = (
+				BFF8894C1505E53C007B4A9B /* InterSystems-menubar */,
+				BFF889451505E53C007B4A9B /* Frameworks */,
+				BFF889431505E53C007B4A9B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		BFF889431505E53C007B4A9B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BFF889421505E53C007B4A9B /* InterSystems-menubar.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BFF889451505E53C007B4A9B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BFF889461505E53C007B4A9B /* Cocoa.framework */,
+				BFF889481505E53C007B4A9B /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BFF889481505E53C007B4A9B /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BFF889491505E53C007B4A9B /* AppKit.framework */,
+				BFF8894A1505E53C007B4A9B /* CoreData.framework */,
+				BFF8894B1505E53C007B4A9B /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		BFF8894C1505E53C007B4A9B /* InterSystems-menubar */ = {
+			isa = PBXGroup;
+			children = (
+				BFF889581505E53C007B4A9B /* InterSystems_menubarAppDelegate.h */,
+				BFF889591505E53C007B4A9B /* InterSystems_menubarAppDelegate.m */,
+				BFF8895B1505E53C007B4A9B /* MainMenu.xib */,
+				BFF8895E1505E53C007B4A9B /* InterSystems_menubar.xcdatamodeld */,
+				BFF8894D1505E53C007B4A9B /* Supporting Files */,
+			);
+			path = "InterSystems-menubar";
+			sourceTree = "<group>";
+		};
+		BFF8894D1505E53C007B4A9B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				BFF8894E1505E53C007B4A9B /* InterSystems-menubar-Info.plist */,
+				BFF8894F1505E53C007B4A9B /* InfoPlist.strings */,
+				BFF889521505E53C007B4A9B /* InterSystems-menubar-Prefix.pch */,
+				BFF889531505E53C007B4A9B /* main.m */,
+				BFF889551505E53C007B4A9B /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BFF889411505E53C007B4A9B /* InterSystems-menubar */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BFF889631505E53C007B4A9B /* Build configuration list for PBXNativeTarget "InterSystems-menubar" */;
+			buildPhases = (
+				BFF8893E1505E53C007B4A9B /* Sources */,
+				BFF8893F1505E53C007B4A9B /* Frameworks */,
+				BFF889401505E53C007B4A9B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "InterSystems-menubar";
+			productName = "InterSystems-menubar";
+			productReference = BFF889421505E53C007B4A9B /* InterSystems-menubar.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BFF889391505E53C007B4A9B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				ORGANIZATIONNAME = "David Tong";
+			};
+			buildConfigurationList = BFF8893C1505E53C007B4A9B /* Build configuration list for PBXProject "InterSystems-menubar" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = BFF889371505E53C007B4A9B;
+			productRefGroup = BFF889431505E53C007B4A9B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BFF889411505E53C007B4A9B /* InterSystems-menubar */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BFF889401505E53C007B4A9B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BFF889511505E53C007B4A9B /* InfoPlist.strings in Resources */,
+				BFF889571505E53C007B4A9B /* Credits.rtf in Resources */,
+				BFF8895D1505E53C007B4A9B /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BFF8893E1505E53C007B4A9B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BFF889541505E53C007B4A9B /* main.m in Sources */,
+				BFF8895A1505E53C007B4A9B /* InterSystems_menubarAppDelegate.m in Sources */,
+				BFF889601505E53C007B4A9B /* InterSystems_menubar.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		BFF8894F1505E53C007B4A9B /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BFF889501505E53C007B4A9B /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		BFF889551505E53C007B4A9B /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BFF889561505E53C007B4A9B /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		BFF8895B1505E53C007B4A9B /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BFF8895C1505E53C007B4A9B /* en */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		BFF889611505E53C007B4A9B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		BFF889621505E53C007B4A9B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		BFF889641505E53C007B4A9B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "InterSystems-menubar/InterSystems-menubar-Prefix.pch";
+				INFOPLIST_FILE = "InterSystems-menubar/InterSystems-menubar-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		BFF889651505E53C007B4A9B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "InterSystems-menubar/InterSystems-menubar-Prefix.pch";
+				INFOPLIST_FILE = "InterSystems-menubar/InterSystems-menubar-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BFF8893C1505E53C007B4A9B /* Build configuration list for PBXProject "InterSystems-menubar" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BFF889611505E53C007B4A9B /* Debug */,
+				BFF889621505E53C007B4A9B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BFF889631505E53C007B4A9B /* Build configuration list for PBXNativeTarget "InterSystems-menubar" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BFF889641505E53C007B4A9B /* Debug */,
+				BFF889651505E53C007B4A9B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		BFF8895E1505E53C007B4A9B /* InterSystems_menubar.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				BFF8895F1505E53C007B4A9B /* InterSystems_menubar.xcdatamodel */,
+			);
+			currentVersion = BFF8895F1505E53C007B4A9B /* InterSystems_menubar.xcdatamodel */;
+			path = InterSystems_menubar.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = BFF889391505E53C007B4A9B /* Project object */;
+}
