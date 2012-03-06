@@ -6,6 +6,7 @@
     IBOutlet NSMenuItem *missingInstancesDescription;
     IBOutlet NSMenuItem *missingInstancesSeparator;
     
+    NSMutableArray *instancesList;
     NSStatusItem * instancesItem;
     
 @private
@@ -24,5 +25,7 @@
 - (IBAction)saveAction:sender;
 - (IBAction)quit:sender;
 - (void)awakeFromNib;
+- (void)displayMissingInstancesMsg:(BOOL)display;
+- (void)createMenus:(NSMutableArray *)array;
 
 @end

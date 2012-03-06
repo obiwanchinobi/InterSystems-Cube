@@ -7,7 +7,6 @@
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
     // Insert code here to initialize your application
-    NSMutableArray *instancesList;
     instancesList = [[NSMutableArray alloc] init];
     instancesList = [CControl getInstances];
     
@@ -15,8 +14,8 @@
     
     // Load Instances
     if ([instancesList count] > 0) {
-        [missingInstancesDescription setHidden:TRUE];
-        [missingInstancesSeparator setHidden:TRUE];
+        [self displayMissingInstancesMsg:FALSE];
+        [self createMenus:instancesList];
     }
 }
 
@@ -203,6 +202,25 @@
 
 -(IBAction)quit:sender {
     [NSApp performSelector:@selector(terminate:) withObject:nil afterDelay:0.0];
+}
+
+-(void)displayMissingInstancesMsg:(BOOL)display {
+    if (display == NO) {
+        [missingInstancesDescription setHidden:TRUE];
+        [missingInstancesSeparator setHidden:TRUE];
+    }
+}
+
+-(void)createMenus:(NSMutableArray *)array {
+    NSUInteger index = 0;
+    
+    for (id object in array) {
+        
+        // Create menu
+        NSMenuItem *item = [instancesMenu insertItemWithTitle:[object name] action:@selector(openEchowavesURL:) keyEquivalent:@"" atIndex:index];
+        [item setTarget:self]; // or whatever target you want
+        index++;
+    }
 }
 
 - (void)dealloc
