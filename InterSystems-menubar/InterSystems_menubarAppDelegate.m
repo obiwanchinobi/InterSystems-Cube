@@ -11,9 +11,13 @@
     instancesList = [[NSMutableArray alloc] init];
     instancesList = [CControl getInstances];
     
-    NSLog(@"%lu",[instancesList count]);
+//    NSLog(@"%lu",[instancesList count]);
     
-    // Display no instances
+    // Load Instances
+    if ([instancesList count] > 0) {
+        [missingInstancesDescription setHidden:TRUE];
+        [missingInstancesSeparator setHidden:TRUE];
+    }
 }
 
 /**

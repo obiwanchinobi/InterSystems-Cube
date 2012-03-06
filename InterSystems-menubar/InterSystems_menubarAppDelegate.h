@@ -3,6 +3,9 @@
 
 @interface InterSystems_menubarAppDelegate : NSObject <NSApplicationDelegate> {
     IBOutlet NSMenu *instancesMenu;
+    IBOutlet NSMenuItem *missingInstancesDescription;
+    IBOutlet NSMenuItem *missingInstancesSeparator;
+    
     NSStatusItem * instancesItem;
     
 @private
