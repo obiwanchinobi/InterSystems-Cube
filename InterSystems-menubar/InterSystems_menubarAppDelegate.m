@@ -12,6 +12,8 @@
     instancesList = [CControl getInstances];
     
     NSLog(@"%lu",[instancesList count]);
+    
+    // Display no instances
 }
 
 /**
@@ -193,6 +195,10 @@
     [instancesItem setImage:instancesImage];
     [instancesItem setToolTip:@"Manage InterSystems Instances"];
     [instancesItem setHighlightMode:YES];
+}
+
+-(IBAction)quit:sender {
+    [NSApp performSelector:@selector(terminate:) withObject:nil afterDelay:0.0];
 }
 
 - (void)dealloc
