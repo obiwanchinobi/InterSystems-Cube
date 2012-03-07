@@ -6,16 +6,18 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-    // Insert code here to initialize your application
-    instancesList = [[NSMutableArray alloc] init];
-    instancesList = [CControl getInstances];
-    
-//    NSLog(@"%lu",[instancesList count]);
-    
-    // Load Instances
-    if ([instancesList count] > 0) {
-        [self displayMissingInstancesMsg:FALSE];
-        [self createMenus:instancesList];
+    if ([CControl isInterSystemsInstalled] == TRUE) {
+        instancesList = [[NSMutableArray alloc] init];
+        instancesList = [CControl getInstances];
+        
+        // Load Instances
+        if ([instancesList count] > 0) {
+            [self displayMissingInstancesMsg];
+            [self createMenus:instancesList];
+        }
+    }
+    else {
+        [self hideMenus];
     }
 }
 
@@ -204,11 +206,13 @@
     [NSApp performSelector:@selector(terminate:) withObject:nil afterDelay:0.0];
 }
 
--(void)displayMissingInstancesMsg:(BOOL)display {
-    if (display == NO) {
-        [missingInstancesDescription setHidden:TRUE];
-        [missingInstancesSeparator setHidden:TRUE];
-    }
+-(void)displayMissingInstancesMsg {
+    [missingInstancesDescription setHidden:TRUE];
+}
+
+-(void)hideMenus {
+    [installedInstancesSeparator setHidden:TRUE];
+    [refreshMenu setHidden:TRUE];
 }
 
 -(void)createMenus:(NSMutableArray *)array {

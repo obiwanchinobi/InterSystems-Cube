@@ -4,7 +4,8 @@
 @interface InterSystems_menubarAppDelegate : NSObject <NSApplicationDelegate> {
     IBOutlet NSMenu *instancesMenu;
     IBOutlet NSMenuItem *missingInstancesDescription;
-    IBOutlet NSMenuItem *missingInstancesSeparator;
+    IBOutlet NSMenuItem *installedInstancesSeparator;
+    IBOutlet NSMenuItem *refreshMenu;
     
     NSMutableArray *instancesList;
     NSStatusItem * instancesItem;
@@ -25,7 +26,8 @@
 - (IBAction)saveAction:sender;
 - (IBAction)quit:sender;
 - (void)awakeFromNib;
-- (void)displayMissingInstancesMsg:(BOOL)display;
+- (void)displayMissingInstancesMsg;
+- (void)hideMenus;
 - (void)createMenus:(NSMutableArray *)array;
 
 @end

@@ -51,7 +51,7 @@
 					<object class="NSMenuItem" id="792591205">
 						<reference key="NSMenu" ref="860499646"/>
 						<bool key="NSIsDisabled">YES</bool>
-						<string key="NSTitle">No InterSystems instances installed</string>
+						<string key="NSTitle">No InterSystems Instances installed</string>
 						<string key="NSKeyEquiv"/>
 						<int key="NSMnemonicLoc">2147483647</int>
 						<object class="NSCustomResource" key="NSOnImage" id="726662282">
@@ -62,16 +62,6 @@
 							<string key="NSClassName">NSImage</string>
 							<string key="NSResourceName">NSMenuMixedState</string>
 						</object>
-					</object>
-					<object class="NSMenuItem" id="297647688">
-						<reference key="NSMenu" ref="860499646"/>
-						<bool key="NSIsDisabled">YES</bool>
-						<bool key="NSIsSeparator">YES</bool>
-						<string key="NSTitle"/>
-						<string key="NSKeyEquiv"/>
-						<int key="NSMnemonicLoc">2147483647</int>
-						<reference key="NSOnImage" ref="726662282"/>
-						<reference key="NSMixedImage" ref="168201391"/>
 					</object>
 					<object class="NSMenuItem" id="320281368">
 						<reference key="NSMenu" ref="860499646"/>
@@ -103,7 +93,7 @@
 					</object>
 					<object class="NSMenuItem" id="784658500">
 						<reference key="NSMenu" ref="860499646"/>
-						<string key="NSTitle">Quit InterSystems Instances</string>
+						<string key="NSTitle">Quit</string>
 						<string key="NSKeyEquiv"/>
 						<int key="NSMnemonicLoc">2147483647</int>
 						<reference key="NSOnImage" ref="726662282"/>
@@ -149,11 +139,19 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
-						<string key="label">missingInstancesSeparator</string>
+						<string key="label">installedInstancesSeparator</string>
 						<reference key="source" ref="976324537"/>
-						<reference key="destination" ref="297647688"/>
+						<reference key="destination" ref="320281368"/>
 					</object>
-					<int key="connectionID">577</int>
+					<int key="connectionID">581</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">refreshMenu</string>
+						<reference key="source" ref="976324537"/>
+						<reference key="destination" ref="793731415"/>
+					</object>
+					<int key="connectionID">582</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -201,7 +199,6 @@
 							<reference ref="320281368"/>
 							<reference ref="784658500"/>
 							<reference ref="792591205"/>
-							<reference ref="297647688"/>
 							<reference ref="793731415"/>
 							<reference ref="325226332"/>
 						</object>
@@ -220,11 +217,6 @@
 					<object class="IBObjectRecord">
 						<int key="objectID">574</int>
 						<reference key="object" ref="792591205"/>
-						<reference key="parent" ref="860499646"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">575</int>
-						<reference key="object" ref="297647688"/>
 						<reference key="parent" ref="860499646"/>
 					</object>
 					<object class="IBObjectRecord">
@@ -252,13 +244,11 @@
 					<string>571.IBPluginDependency</string>
 					<string>572.IBPluginDependency</string>
 					<string>574.IBPluginDependency</string>
-					<string>575.IBPluginDependency</string>
 					<string>579.IBPluginDependency</string>
 					<string>580.IBPluginDependency</string>
 				</object>
 				<object class="NSMutableArray" key="dict.values">
 					<bool key="EncodedWithXMLCoder">YES</bool>
-					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -284,7 +274,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">580</int>
+			<int key="maxID">582</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -328,13 +318,15 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>installedInstancesSeparator</string>
 							<string>instancesMenu</string>
 							<string>missingInstancesDescription</string>
-							<string>missingInstancesSeparator</string>
+							<string>refreshMenu</string>
 							<string>window</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>NSMenuItem</string>
 							<string>NSMenu</string>
 							<string>NSMenuItem</string>
 							<string>NSMenuItem</string>
@@ -345,13 +337,18 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>installedInstancesSeparator</string>
 							<string>instancesMenu</string>
 							<string>missingInstancesDescription</string>
-							<string>missingInstancesSeparator</string>
+							<string>refreshMenu</string>
 							<string>window</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<object class="IBToOneOutletInfo">
+								<string key="name">installedInstancesSeparator</string>
+								<string key="candidateClassName">NSMenuItem</string>
+							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">instancesMenu</string>
 								<string key="candidateClassName">NSMenu</string>
@@ -361,7 +358,7 @@
 								<string key="candidateClassName">NSMenuItem</string>
 							</object>
 							<object class="IBToOneOutletInfo">
-								<string key="name">missingInstancesSeparator</string>
+								<string key="name">refreshMenu</string>
 								<string key="candidateClassName">NSMenuItem</string>
 							</object>
 							<object class="IBToOneOutletInfo">

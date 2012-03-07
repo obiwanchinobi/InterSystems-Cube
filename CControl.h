@@ -8,4 +8,5 @@
 }
 
 + (NSMutableArray *)getInstances;
++ (BOOL)isInterSystemsInstalled;
 @end

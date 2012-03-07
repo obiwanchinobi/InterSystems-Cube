@@ -13,11 +13,6 @@
     return self;
 }
 
-- (void)dealloc
-{
-    [super dealloc];
-}
-
 + (NSMutableArray *)getInstances {
     NSMutableArray *instancesList;
     
@@ -86,4 +81,15 @@
     return instancesList;
 }
 
++ (BOOL)isInterSystemsInstalled {
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    BOOL isDir;
+    
+    return [fileManager fileExistsAtPath:[NSString stringWithFormat:@"/usr/bin/ccontrol"] isDirectory:&isDir] && !isDir;
+}
+
+- (void)dealloc
+{
+    [super dealloc];
+}
 @end
