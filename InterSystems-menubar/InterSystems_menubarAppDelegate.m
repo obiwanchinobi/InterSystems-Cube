@@ -214,11 +214,28 @@
 -(void)createMenus:(NSMutableArray *)array {
     NSUInteger index = 0;
     
+    NSMenu *subMenu;
+    
     for (id object in array) {
         
         // Create menu
-        NSMenuItem *item = [instancesMenu insertItemWithTitle:[object name] action:@selector(openEchowavesURL:) keyEquivalent:@"" atIndex:index];
-        [item setTarget:self]; // or whatever target you want
+        NSMenuItem *item = [instancesMenu insertItemWithTitle:[object name] action:nil keyEquivalent:@"" atIndex:index];
+        [item setTarget:self]; // or whatever target you want    
+        
+        // csession submenu
+        subMenu = [[NSMenu alloc] init];
+        [subMenu addItemWithTitle:@"Open Telnet session" action:nil keyEquivalent:@""];
+        [subMenu addItem:[NSMenuItem separatorItem]];
+        
+        // csession submenu
+        [subMenu addItemWithTitle:@"Start/Stop" action:nil keyEquivalent:@""];
+        [subMenu addItem:[NSMenuItem separatorItem]];
+        
+        // autostart submenu
+        [subMenu addItemWithTitle:@"Autostart on System Startup" action:nil keyEquivalent:@""];
+        [item setSubmenu:subMenu];
+        
+        [subMenu release];
         index++;
     }
 }
