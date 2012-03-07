@@ -213,28 +213,46 @@
 
 -(void)createMenus:(NSMutableArray *)array {
     NSUInteger index = 0;
-    
+    InterSystemsInstance *instance;
     NSMenu *subMenu;
     
     for (id object in array) {
-        
+        instance = [[InterSystemsInstance alloc] init];
+        instance = object;
+
         // Create menu
         NSMenuItem *item = [instancesMenu insertItemWithTitle:[object name] action:nil keyEquivalent:@"" atIndex:index];
-        [item setTarget:self]; // or whatever target you want    
+        [item setTarget:self]; // or whatever target you want
+
+        if ([instance.status isEqualToString: @"running"]) {
+            [item setImage:[NSImage imageNamed:NSImageNameStatusAvailable]];
+        }
+        else if ([instance.status isEqualToString: @"down"]) {
+            [item setImage:[NSImage imageNamed:NSImageNameStatusUnavailable]];
+        }
+        else {
+            [item setImage:[NSImage imageNamed:NSImageNameStatusPartiallyAvailable]];
+        }
         
-        // csession submenu
         subMenu = [[NSMenu alloc] init];
+
+        // csession submenu
         [subMenu addItemWithTitle:@"Open Telnet session" action:nil keyEquivalent:@""];
+        
+        // directory submenu
+        [subMenu addItemWithTitle:@"Open Installation directory" action:nil keyEquivalent:@""];
+        
         [subMenu addItem:[NSMenuItem separatorItem]];
         
-        // csession submenu
+        // start/stop submenu
         [subMenu addItemWithTitle:@"Start/Stop" action:nil keyEquivalent:@""];
-        [subMenu addItem:[NSMenuItem separatorItem]];
         
         // autostart submenu
         [subMenu addItemWithTitle:@"Autostart on System Startup" action:nil keyEquivalent:@""];
+        //        [subMenu setImage:[NSImage imageNamed:NSImageNameMenuOnStateTemplate]];
         [item setSubmenu:subMenu];
         
+        [instance release];
         [subMenu release];
         index++;
     }
