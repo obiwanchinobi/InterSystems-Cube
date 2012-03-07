@@ -215,6 +215,27 @@
     [refreshMenu setHidden:TRUE];
 }
 
+- (IBAction)telnet:sender {
+    NSString *instanceName = [sender parentItem].title;
+    NSAppleScript* csession = [[NSAppleScript alloc] initWithSource:
+                               [NSString stringWithFormat:
+                                    @"tell application \"Terminal\"\n"
+                                    @"  activate\n"
+                                    @"  if it is running then\n"
+                                    @"      do script \"csession %@\"\n"
+                                    @"  else\n"
+                                    @"      do script \"csession %@\" in front window\n"
+                                    @"  end if\n"
+                                    @"  tell the front window\n"
+                                    @"      set title displays shell path to false\n"
+                                    @"      set title displays custom title to true\n"
+                                    @"      set custom title to \"InterSystems Session: %@\"\n"
+                                    @"  end tell\n"
+                                    @"end tell", instanceName, instanceName, instanceName]];
+    
+    [csession executeAndReturnError:nil];
+}
+
 -(void)createMenus:(NSMutableArray *)array {
     NSUInteger index = 0;
     InterSystemsInstance *instance;
@@ -242,9 +263,9 @@
         }
         
         subMenu = [[NSMenu alloc] init];
-
+        
         // csession submenu
-        [subMenu addItemWithTitle:@"Open Telnet session" action:nil keyEquivalent:@""];
+        [subMenu addItemWithTitle:@"Open Telnet session" action:@selector(telnet:) keyEquivalent:@""];
         
         // directory submenu
         [subMenu addItemWithTitle:@"Open Installation directory" action:nil keyEquivalent:@""];
