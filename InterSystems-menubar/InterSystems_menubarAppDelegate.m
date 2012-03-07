@@ -215,6 +215,9 @@
     NSUInteger index = 0;
     InterSystemsInstance *instance;
     NSMenu *subMenu;
+    NSMenuItem *autoStartMenu;
+    BOOL isDir;
+    NSFileManager *fileManager = [NSFileManager defaultManager];
     
     for (id object in array) {
         instance = [[InterSystemsInstance alloc] init];
@@ -248,8 +251,12 @@
         [subMenu addItemWithTitle:@"Start/Stop" action:nil keyEquivalent:@""];
         
         // autostart submenu
-        [subMenu addItemWithTitle:@"Autostart on System Startup" action:nil keyEquivalent:@""];
-        //        [subMenu setImage:[NSImage imageNamed:NSImageNameMenuOnStateTemplate]];
+        autoStartMenu = [subMenu addItemWithTitle:@"Autostart on System Startup" action:nil keyEquivalent:@""];
+        
+        if ([fileManager fileExistsAtPath:[NSString stringWithFormat:@"/Library/StartupItems/%@", instance.name] isDirectory:&isDir] && isDir) {
+            [autoStartMenu setState:NSOnState];
+        }
+        
         [item setSubmenu:subMenu];
         
         [instance release];
