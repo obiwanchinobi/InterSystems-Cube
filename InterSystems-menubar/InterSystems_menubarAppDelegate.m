@@ -7,6 +7,16 @@
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
     // Insert code here to initialize your application
+    instancesList = [[NSMutableArray alloc] init];
+    instancesList = [CControl getInstances];
+    
+//    NSLog(@"%lu",[instancesList count]);
+    
+    // Load Instances
+    if ([instancesList count] > 0) {
+        [self displayMissingInstancesMsg:FALSE];
+        [self createMenus:instancesList];
+    }
 }
 
 /**
@@ -181,8 +191,84 @@
     return NSTerminateNow;
 }
 
+-(void)awakeFromNib {
+    NSImage *instancesImage = [NSImage imageNamed:@"cube_16.png"];
+    instancesItem = [[[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength] retain];
+    [instancesItem setMenu:instancesMenu];
+    [instancesItem setImage:instancesImage];
+    [instancesItem setToolTip:@"Manage InterSystems Instances"];
+    [instancesItem setHighlightMode:YES];
+}
+
+-(IBAction)quit:sender {
+    [NSApp performSelector:@selector(terminate:) withObject:nil afterDelay:0.0];
+}
+
+-(void)displayMissingInstancesMsg:(BOOL)display {
+    if (display == NO) {
+        [missingInstancesDescription setHidden:TRUE];
+        [missingInstancesSeparator setHidden:TRUE];
+    }
+}
+
+-(void)createMenus:(NSMutableArray *)array {
+    NSUInteger index = 0;
+    InterSystemsInstance *instance;
+    NSMenu *subMenu;
+    NSMenuItem *autoStartMenu;
+    BOOL isDir;
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    
+    for (id object in array) {
+        instance = [[InterSystemsInstance alloc] init];
+        instance = object;
+
+        // Create menu
+        NSMenuItem *item = [instancesMenu insertItemWithTitle:[object name] action:nil keyEquivalent:@"" atIndex:index];
+        [item setTarget:self]; // or whatever target you want
+
+        if ([instance.status isEqualToString: @"running"]) {
+            [item setImage:[NSImage imageNamed:NSImageNameStatusAvailable]];
+        }
+        else if ([instance.status isEqualToString: @"down"]) {
+            [item setImage:[NSImage imageNamed:NSImageNameStatusUnavailable]];
+        }
+        else {
+            [item setImage:[NSImage imageNamed:NSImageNameStatusPartiallyAvailable]];
+        }
+        
+        subMenu = [[NSMenu alloc] init];
+
+        // csession submenu
+        [subMenu addItemWithTitle:@"Open Telnet session" action:nil keyEquivalent:@""];
+        
+        // directory submenu
+        [subMenu addItemWithTitle:@"Open Installation directory" action:nil keyEquivalent:@""];
+        
+        [subMenu addItem:[NSMenuItem separatorItem]];
+        
+        // start/stop submenu
+        [subMenu addItemWithTitle:@"Start/Stop" action:nil keyEquivalent:@""];
+        
+        // autostart submenu
+        autoStartMenu = [subMenu addItemWithTitle:@"Autostart on System Startup" action:nil keyEquivalent:@""];
+        
+        if ([fileManager fileExistsAtPath:[NSString stringWithFormat:@"/Library/StartupItems/%@", instance.name] isDirectory:&isDir] && isDir) {
+            [autoStartMenu setState:NSOnState];
+        }
+        
+        [item setSubmenu:subMenu];
+        
+        [instance release];
+        [subMenu release];
+        index++;
+    }
+}
+
 - (void)dealloc
 {
+    [instancesItem release];
+    
     [__managedObjectContext release];
     [__persistentStoreCoordinator release];
     [__managedObjectModel release];
