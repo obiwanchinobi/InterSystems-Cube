@@ -88,6 +88,47 @@
     return [fileManager fileExistsAtPath:[NSString stringWithFormat:@"/usr/bin/ccontrol"] isDirectory:&isDir] && !isDir;
 }
 
++ (BOOL)startStopInstance:(InterSystemsInstance *)instance {
+    NSString *action;
+    NSString *parameter = nil;
+    
+    if ([instance.status isEqualToString:@"running"]) {
+        action = @"stop";
+        parameter = @"quietly";
+    }
+    else if ([instance.status isEqualToString:@"down"]) {
+        action = @"start";
+    }
+    else {
+        action = @"force";
+    }
+    
+    //Setup the task execution
+    NSPipe *output = [NSPipe pipe];
+    NSTask *task = [[[NSTask alloc] init] autorelease];
+    [task setLaunchPath:@"/usr/bin/ccontrol"];
+    [task setArguments:[NSArray arrayWithObjects:action, instance.name, parameter, nil]];
+    [task setStandardOutput:output];
+    
+    //launch task and wait for completion
+    [task launch];
+    [task waitUntilExit];
+    int status = [task terminationStatus];
+    
+    if (status == 0) {
+        if ([instance.status isEqualToString:@"running"]) {
+            instance.status = @"down";
+        }
+        else if ([instance.status isEqualToString:@"down"]) {
+            instance.status = @"running";
+        }
+        return TRUE;
+    }
+    else {
+        return FALSE;
+    }
+}
+
 - (void)dealloc
 {
     [super dealloc];

@@ -249,15 +249,38 @@
     [openDir executeAndReturnError:nil];
 }
 
+- (IBAction)startStopInstance:sender {
+    InterSystemsInstance *instance = [sender representedObject];
+    
+    if ([CControl startStopInstance:instance] == TRUE) {
+        if ([instance.status isEqualToString:@"running"]) {
+            [sender setTitle:@"Stop Instance"];
+            [[sender parentItem] setImage:[NSImage imageNamed:NSImageNameStatusAvailable]];
+        }
+        else if ([instance.status isEqualToString:@"down"]) {
+            [sender setTitle:@"Start Instance"];
+            [[sender parentItem] setImage:[NSImage imageNamed:NSImageNameStatusUnavailable]];
+        }
+        else {
+            NSLog(@"Instance is niether running or down");
+        }
+    }
+    else {
+        NSLog(@"Error starting/stopping!");
+    }
+}
+
 -(void)createMenus:(NSMutableArray *)array {
     NSUInteger index = 0;
     InterSystemsInstance *instance;
     NSMenu *subMenu;
     NSMenuItem *telnetMenuItem;
     NSMenuItem *openDirMenuItem;
+    NSMenuItem *startStopMenuItem;
     NSMenuItem *autoStartMenu;
     BOOL isDir;
     NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSString *status;
     
     for (id object in array) {
         instance = [[InterSystemsInstance alloc] init];
@@ -295,7 +318,17 @@
         [subMenu addItem:[NSMenuItem separatorItem]];
         
         // start/stop submenu
-        [subMenu addItemWithTitle:@"Start/Stop" action:nil keyEquivalent:@""];
+        if ([instance.status isEqualToString: @"running"]) {
+            status = @"Stop Instance";
+        }
+        else if ([instance.status isEqualToString: @"down"]) {
+            status = @"Start Instance";
+        }
+        else {
+            status = @"Force Stop Instance";
+        }
+        startStopMenuItem = [subMenu addItemWithTitle:status action:@selector(startStopInstance:) keyEquivalent:@""];
+        [startStopMenuItem setRepresentedObject:instance];
         
         // autostart submenu
         autoStartMenu = [subMenu addItemWithTitle:@"Autostart on System Startup" action:nil keyEquivalent:@""];

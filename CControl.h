@@ -9,4 +9,5 @@
 
 + (NSMutableArray *)getInstances;
 + (BOOL)isInterSystemsInstalled;
++ (BOOL)startStopInstance:(InterSystemsInstance *)instance;
 @end
