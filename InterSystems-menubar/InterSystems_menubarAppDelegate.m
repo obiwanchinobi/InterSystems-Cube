@@ -236,10 +236,22 @@
     [csession executeAndReturnError:nil];
 }
 
+- (IBAction)openDirectory:sender {
+    InterSystemsInstance *instance = [sender representedObject];
+    NSAppleScript* openDir = [[NSAppleScript alloc] initWithSource:
+                               [NSString stringWithFormat:
+                                @"tell application \"Finder\"\n"
+                                @"  open (\"%@\" as POSIX file)\n"
+                                @"end tell", instance.dir]];
+    
+    [openDir executeAndReturnError:nil];
+}
+
 -(void)createMenus:(NSMutableArray *)array {
     NSUInteger index = 0;
     InterSystemsInstance *instance;
     NSMenu *subMenu;
+    NSMenuItem *openDirMenuItem;
     NSMenuItem *autoStartMenu;
     BOOL isDir;
     NSFileManager *fileManager = [NSFileManager defaultManager];
@@ -249,7 +261,7 @@
         instance = object;
 
         // Create menu
-        NSMenuItem *item = [instancesMenu insertItemWithTitle:[object name] action:nil keyEquivalent:@"" atIndex:index];
+        NSMenuItem *item = [instancesMenu insertItemWithTitle:instance.name action:nil keyEquivalent:@"" atIndex:index];
         [item setTarget:self]; // or whatever target you want
 
         if ([instance.status isEqualToString: @"running"]) {
@@ -268,7 +280,8 @@
         [subMenu addItemWithTitle:@"Open Telnet session" action:@selector(telnet:) keyEquivalent:@""];
         
         // directory submenu
-        [subMenu addItemWithTitle:@"Open Installation directory" action:nil keyEquivalent:@""];
+        openDirMenuItem = [subMenu addItemWithTitle:@"Open Installation directory" action:@selector(openDirectory:) keyEquivalent:@""];
+        [openDirMenuItem setRepresentedObject:instance];
         
         [subMenu addItem:[NSMenuItem separatorItem]];
         

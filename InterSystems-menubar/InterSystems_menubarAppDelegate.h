@@ -26,6 +26,8 @@
 - (IBAction)saveAction:sender;
 - (IBAction)quit:sender;
 - (IBAction)telnet:sender;
+- (IBAction)openDirectory:sender;
+    
 - (void)awakeFromNib;
 - (void)displayMissingInstancesMsg;
 - (void)hideMenus;
