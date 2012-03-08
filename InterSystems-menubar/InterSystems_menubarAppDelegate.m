@@ -279,6 +279,11 @@
         
         subMenu = [[NSMenu alloc] init];
         
+        // version submenu
+        [subMenu addItemWithTitle:instance.version action:nil keyEquivalent:@""];
+        
+        [subMenu addItem:[NSMenuItem separatorItem]];
+        
         // csession submenu
         telnetMenuItem = [subMenu addItemWithTitle:@"Open Telnet session" action:@selector(telnet:) keyEquivalent:@""];
         [telnetMenuItem setRepresentedObject:instance];
