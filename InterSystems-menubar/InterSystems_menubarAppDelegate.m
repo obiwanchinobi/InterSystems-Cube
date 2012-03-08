@@ -216,7 +216,9 @@
 }
 
 - (IBAction)telnet:sender {
-    NSString *instanceName = [sender parentItem].title;
+    InterSystemsInstance *instance = [sender representedObject];
+    
+    NSString *instanceName = instance.name;
     NSAppleScript* csession = [[NSAppleScript alloc] initWithSource:
                                [NSString stringWithFormat:
                                     @"tell application \"Terminal\"\n"
@@ -251,6 +253,7 @@
     NSUInteger index = 0;
     InterSystemsInstance *instance;
     NSMenu *subMenu;
+    NSMenuItem *telnetMenuItem;
     NSMenuItem *openDirMenuItem;
     NSMenuItem *autoStartMenu;
     BOOL isDir;
@@ -277,7 +280,8 @@
         subMenu = [[NSMenu alloc] init];
         
         // csession submenu
-        [subMenu addItemWithTitle:@"Open Telnet session" action:@selector(telnet:) keyEquivalent:@""];
+        telnetMenuItem = [subMenu addItemWithTitle:@"Open Telnet session" action:@selector(telnet:) keyEquivalent:@""];
+        [telnetMenuItem setRepresentedObject:instance];
         
         // directory submenu
         openDirMenuItem = [subMenu addItemWithTitle:@"Open Installation directory" action:@selector(openDirectory:) keyEquivalent:@""];
