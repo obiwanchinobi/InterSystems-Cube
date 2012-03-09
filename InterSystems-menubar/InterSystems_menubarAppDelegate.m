@@ -321,7 +321,6 @@
         }
         [telnetMenuItem setRepresentedObject:instance];
         
-//        NSLog(@"boo: %@",[InterSystemsInstance isInstanceRunning:instance]);
         // directory submenu
         openDirMenuItem = [subMenu addItemWithTitle:@"Open Installation directory" action:@selector(openDirectory:) keyEquivalent:@""];
         [openDirMenuItem setRepresentedObject:instance];
@@ -339,13 +338,7 @@
             status = @"Force Stop Instance";
         }
         startStopMenuItem = [subMenu addItemWithTitle:status action:@selector(startStopInstance:) keyEquivalent:@""];
-//        [startStopMenuItem setRepresentedObject:instance];
-        [startStopMenuItem setRepresentedObject:
-            [NSDictionary dictionaryWithObjectsAndKeys:instance, @"instance", telnetMenuItem, @"telnet", nil]
-         ];
-//        [NSDictionary dictionaryWithObjectsAndKeys:style, @"style", nil]
-        
-//        [startStopMenuItem setRepresentedObject:telnetMenuItem];
+        [startStopMenuItem setRepresentedObject:[NSDictionary dictionaryWithObjectsAndKeys:instance, @"instance", telnetMenuItem, @"telnet", nil]];
         
         // autostart submenu
         autoStartMenu = [subMenu addItemWithTitle:@"Autostart on System Startup" action:nil keyEquivalent:@""];
