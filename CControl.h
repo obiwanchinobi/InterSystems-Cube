@@ -6,6 +6,8 @@
 @private
     
 }
+extern NSString * const Started;
+extern NSString * const Stopped;
 
 + (NSMutableArray *)getInstances;
 + (BOOL)isInterSystemsInstalled;

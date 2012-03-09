@@ -256,12 +256,12 @@
     NSMenuItem *telnetMenuItem = [dict objectForKey:@"telnet"];
     
     if ([CControl startStopInstance:instance] == TRUE) {
-        if ([instance.status isEqualToString:@"running"]) {
+        if ([instance.status isEqualToString:Started]) {
             [sender setTitle:@"Stop Instance"];
             [telnetMenuItem setAction:@selector(telnet:)];
             [[sender parentItem] setImage:[NSImage imageNamed:NSImageNameStatusAvailable]];
         }
-        else if ([instance.status isEqualToString:@"down"]) {
+        else if ([instance.status isEqualToString:Stopped]) {
             [sender setTitle:@"Start Instance"];
             [telnetMenuItem setAction:nil];
             [[sender parentItem] setImage:[NSImage imageNamed:NSImageNameStatusUnavailable]];
@@ -295,10 +295,10 @@
         NSMenuItem *item = [instancesMenu insertItemWithTitle:instance.name action:nil keyEquivalent:@"" atIndex:index];
         [item setTarget:self]; // or whatever target you want
 
-        if ([instance.status isEqualToString: @"running"]) {
+        if ([instance.status isEqualToString: Started]) {
             [item setImage:[NSImage imageNamed:NSImageNameStatusAvailable]];
         }
-        else if ([instance.status isEqualToString: @"down"]) {
+        else if ([instance.status isEqualToString: Stopped]) {
             [item setImage:[NSImage imageNamed:NSImageNameStatusUnavailable]];
         }
         else {
@@ -329,10 +329,10 @@
         [subMenu addItem:[NSMenuItem separatorItem]];
         
         // start/stop submenu
-        if ([instance.status isEqualToString: @"running"]) {
+        if ([instance.status isEqualToString:Started]) {
             status = @"Stop Instance";
         }
-        else if ([instance.status isEqualToString: @"down"]) {
+        else if ([instance.status isEqualToString:Stopped]) {
             status = @"Start Instance";
         }
         else {

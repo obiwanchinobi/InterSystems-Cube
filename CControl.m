@@ -3,6 +3,9 @@
 
 @implementation CControl
 
+NSString * const Started = @"running";
+NSString * const Stopped = @"down";
+
 - (id)init
 {
     self = [super init];
@@ -92,11 +95,11 @@
     NSString *action;
     NSString *parameter = nil;
     
-    if ([instance.status isEqualToString:@"running"]) {
+    if ([instance.status isEqualToString:Started]) {
         action = @"stop";
         parameter = @"quietly";
     }
-    else if ([instance.status isEqualToString:@"down"]) {
+    else if ([instance.status isEqualToString:Stopped]) {
         action = @"start";
     }
     else {
@@ -116,11 +119,11 @@
     int status = [task terminationStatus];
     
     if (status == 0) {
-        if ([instance.status isEqualToString:@"running"]) {
-            instance.status = @"down";
+        if ([instance.status isEqualToString:Started]) {
+            instance.status = Stopped;
         }
-        else if ([instance.status isEqualToString:@"down"]) {
-            instance.status = @"running";
+        else if ([instance.status isEqualToString:Stopped]) {
+            instance.status = Started;
         }
         return TRUE;
     }
