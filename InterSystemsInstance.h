@@ -22,4 +22,6 @@
 @property (copy) NSString* superServerPort;
 @property (copy) NSString* webServerPort;
 
++ (BOOL)isInstanceRunning:(InterSystemsInstance *)instance;
+
 @end

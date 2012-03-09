@@ -26,4 +26,11 @@
     [super dealloc];
 }
 
++ (BOOL)isInstanceRunning:(InterSystemsInstance *)instance {
+    if ([instance.status isEqualToString: @"running"]) {
+        return TRUE;
+    }
+    return FALSE;
+}
+
 @end

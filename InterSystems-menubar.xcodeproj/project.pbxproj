@@ -57,8 +57,8 @@
 			isa = PBXGroup;
 			children = (
 				BFF889671505E763007B4A9B /* Classes */,
-				BFF889661505E753007B4A9B /* Resources */,
 				BFF8894C1505E53C007B4A9B /* InterSystems-menubar */,
+				BFF889661505E753007B4A9B /* Resources */,
 				BFF889451505E53C007B4A9B /* Frameworks */,
 				BFF889431505E53C007B4A9B /* Products */,
 			);

@@ -250,15 +250,20 @@
 }
 
 - (IBAction)startStopInstance:sender {
-    InterSystemsInstance *instance = [sender representedObject];
+//    InterSystemsInstance *instance = [sender representedObject];
+    NSMutableDictionary *dict = [sender representedObject];
+    InterSystemsInstance *instance = [dict objectForKey:@"instance"];
+    NSMenuItem *telnetMenuItem = [dict objectForKey:@"telnet"];
     
     if ([CControl startStopInstance:instance] == TRUE) {
         if ([instance.status isEqualToString:@"running"]) {
             [sender setTitle:@"Stop Instance"];
+            [telnetMenuItem setAction:@selector(telnet:)];
             [[sender parentItem] setImage:[NSImage imageNamed:NSImageNameStatusAvailable]];
         }
         else if ([instance.status isEqualToString:@"down"]) {
             [sender setTitle:@"Start Instance"];
+            [telnetMenuItem setAction:nil];
             [[sender parentItem] setImage:[NSImage imageNamed:NSImageNameStatusUnavailable]];
         }
         else {
@@ -308,9 +313,15 @@
         [subMenu addItem:[NSMenuItem separatorItem]];
         
         // csession submenu
-        telnetMenuItem = [subMenu addItemWithTitle:@"Open Telnet session" action:@selector(telnet:) keyEquivalent:@""];
+        if ([InterSystemsInstance isInstanceRunning:instance]) {
+            telnetMenuItem = [subMenu addItemWithTitle:@"Open Telnet session" action:@selector(telnet:) keyEquivalent:@""];
+        }
+        else {
+            telnetMenuItem = [subMenu addItemWithTitle:@"Open Telnet session" action:nil keyEquivalent:@""];
+        }
         [telnetMenuItem setRepresentedObject:instance];
         
+//        NSLog(@"boo: %@",[InterSystemsInstance isInstanceRunning:instance]);
         // directory submenu
         openDirMenuItem = [subMenu addItemWithTitle:@"Open Installation directory" action:@selector(openDirectory:) keyEquivalent:@""];
         [openDirMenuItem setRepresentedObject:instance];
@@ -328,7 +339,13 @@
             status = @"Force Stop Instance";
         }
         startStopMenuItem = [subMenu addItemWithTitle:status action:@selector(startStopInstance:) keyEquivalent:@""];
-        [startStopMenuItem setRepresentedObject:instance];
+//        [startStopMenuItem setRepresentedObject:instance];
+        [startStopMenuItem setRepresentedObject:
+            [NSDictionary dictionaryWithObjectsAndKeys:instance, @"instance", telnetMenuItem, @"telnet", nil]
+         ];
+//        [NSDictionary dictionaryWithObjectsAndKeys:style, @"style", nil]
+        
+//        [startStopMenuItem setRepresentedObject:telnetMenuItem];
         
         // autostart submenu
         autoStartMenu = [subMenu addItemWithTitle:@"Autostart on System Startup" action:nil keyEquivalent:@""];
