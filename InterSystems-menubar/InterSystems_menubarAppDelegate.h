@@ -28,6 +28,7 @@
 - (IBAction)telnet:sender;
 - (IBAction)openDirectory:sender;
 - (IBAction)startStopInstance:sender;
+- (IBAction)restartInstance:sender;
     
 - (void)awakeFromNib;
 - (void)displayMissingInstancesMsg;

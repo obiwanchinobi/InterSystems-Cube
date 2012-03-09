@@ -250,20 +250,22 @@
 }
 
 - (IBAction)startStopInstance:sender {
-//    InterSystemsInstance *instance = [sender representedObject];
     NSMutableDictionary *dict = [sender representedObject];
     InterSystemsInstance *instance = [dict objectForKey:@"instance"];
     NSMenuItem *telnetMenuItem = [dict objectForKey:@"telnet"];
+    NSMenuItem *restartMenuItem = [dict objectForKey:@"restart"];
     
     if ([CControl startStopInstance:instance] == TRUE) {
         if ([instance.status isEqualToString:Started]) {
             [sender setTitle:@"Stop Instance"];
             [telnetMenuItem setAction:@selector(telnet:)];
+            [restartMenuItem setAction:@selector(restartInstance:)];
             [[sender parentItem] setImage:[NSImage imageNamed:NSImageNameStatusAvailable]];
         }
         else if ([instance.status isEqualToString:Stopped]) {
             [sender setTitle:@"Start Instance"];
             [telnetMenuItem setAction:nil];
+            [restartMenuItem setAction:nil];
             [[sender parentItem] setImage:[NSImage imageNamed:NSImageNameStatusUnavailable]];
         }
         else {
@@ -275,6 +277,11 @@
     }
 }
 
+- (IBAction)restartInstance:sender {
+    InterSystemsInstance *instance = [sender representedObject];
+    [CControl restartInstance:instance];
+}
+
 -(void)createMenus:(NSMutableArray *)array {
     NSUInteger index = 0;
     InterSystemsInstance *instance;
@@ -282,7 +289,8 @@
     NSMenuItem *telnetMenuItem;
     NSMenuItem *openDirMenuItem;
     NSMenuItem *startStopMenuItem;
-    NSMenuItem *autoStartMenu;
+    NSMenuItem *restartMenuItem;
+    NSMenuItem *autoStartMenuItem;
     BOOL isDir;
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSString *status;
@@ -338,13 +346,24 @@
             status = @"Force Stop Instance";
         }
         startStopMenuItem = [subMenu addItemWithTitle:status action:@selector(startStopInstance:) keyEquivalent:@""];
-        [startStopMenuItem setRepresentedObject:[NSDictionary dictionaryWithObjectsAndKeys:instance, @"instance", telnetMenuItem, @"telnet", nil]];
+        
+        // restart submenu
+        if ([InterSystemsInstance isInstanceRunning:instance]) {
+            restartMenuItem = [subMenu addItemWithTitle:@"Restart Instance" action:@selector(restartInstance:) keyEquivalent:@""];
+        }
+        else {
+            restartMenuItem = [subMenu addItemWithTitle:@"Restart Instance" action:nil keyEquivalent:@""];
+        }
+        [restartMenuItem setRepresentedObject:instance];
+        
+        // setup objects for start/stop submenu
+        [startStopMenuItem setRepresentedObject:[NSDictionary dictionaryWithObjectsAndKeys:instance, @"instance", telnetMenuItem, @"telnet", restartMenuItem, @"restart", nil]];
         
         // autostart submenu
-        autoStartMenu = [subMenu addItemWithTitle:@"Autostart on System Startup" action:nil keyEquivalent:@""];
+        autoStartMenuItem = [subMenu addItemWithTitle:@"Autostart on System Startup" action:nil keyEquivalent:@""];
         
         if ([fileManager fileExistsAtPath:[NSString stringWithFormat:@"/Library/StartupItems/%@", instance.name] isDirectory:&isDir] && isDir) {
-            [autoStartMenu setState:NSOnState];
+            [autoStartMenuItem setState:NSOnState];
         }
         
         [item setSubmenu:subMenu];

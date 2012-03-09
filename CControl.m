@@ -132,6 +132,28 @@ NSString * const Stopped = @"down";
     }
 }
 
++ (void)restartInstance:(InterSystemsInstance *)instance {
+
+    //Setup the task execution
+    NSPipe *output = [NSPipe pipe];
+    NSTask *task = [[[NSTask alloc] init] autorelease];
+    [task setLaunchPath:@"/usr/bin/ccontrol"];
+    [task setArguments:[NSArray arrayWithObjects:@"stop", instance.name, @"quietly", @"restart", nil]];
+    [task setStandardOutput:output];
+    
+    //launch task and wait for completion
+    [task launch];
+    [task waitUntilExit];
+    int status = [task terminationStatus];
+    
+    if (status == 0) {
+        NSLog(@"Should have restarted");
+    }
+    else {
+        NSLog(@"Error restarting");
+    }
+}
+
 - (void)dealloc
 {
     [super dealloc];

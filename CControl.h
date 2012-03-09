@@ -12,4 +12,5 @@ extern NSString * const Stopped;
 + (NSMutableArray *)getInstances;
 + (BOOL)isInterSystemsInstalled;
 + (BOOL)startStopInstance:(InterSystemsInstance *)instance;
++ (void)restartInstance:(InterSystemsInstance *)instance;
 @end
