@@ -78,7 +78,7 @@ NSString * const Stopped = @"down";
         }
     }
     else {
-        NSLog(@"Task failed.");
+        NSLog(@"Failed to run list ISC Instances");
     }
     
     return instancesList;
@@ -125,9 +125,11 @@ NSString * const Stopped = @"down";
         else if ([instance.status isEqualToString:Stopped]) {
             instance.status = Started;
         }
+        NSLog(@"Successfully %@ed %@", action, instance.name);
         return TRUE;
     }
     else {
+        NSLog(@"Attempted to %@ %@ but failed!", action, instance.name);
         return FALSE;
     }
 }
@@ -147,10 +149,10 @@ NSString * const Stopped = @"down";
     int status = [task terminationStatus];
     
     if (status == 0) {
-        NSLog(@"Should have restarted");
+        NSLog(@"%@ restarted!", instance.name);
     }
     else {
-        NSLog(@"Error restarting");
+        NSLog(@"Error restarting %@!", instance.name);
     }
 }
 
