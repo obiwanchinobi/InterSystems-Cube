@@ -6,18 +6,28 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
+    [self validateInstallationFiles];
+}
+
+- (void)validateInstallationFiles {
     if ([CControl isInterSystemsInstalled] == TRUE) {
         instancesList = [[NSMutableArray alloc] init];
         instancesList = [CControl getInstances];
         
         // Load Instances
         if ([instancesList count] > 0) {
-            [self displayMissingInstancesMsg];
-            [self createMenus:instancesList];
+            [self createMenus];
+        }
+        else {
+            [instancesMenu insertItemWithTitle:@"No instances installed" action:nil keyEquivalent:@"" atIndex:0];
+            [instancesMenu insertItem:[NSMenuItem separatorItem] atIndex:1];
+            [instancesMenu insertItemWithTitle:@"Quit" action:@selector(quit:) keyEquivalent:@"" atIndex:2];
         }
     }
     else {
-        [self hideMenus];
+        [instancesMenu insertItemWithTitle:@"No InterSystems installations detected" action:nil keyEquivalent:@"" atIndex:0];
+        [instancesMenu insertItem:[NSMenuItem separatorItem] atIndex:1];
+        [instancesMenu insertItemWithTitle:@"Quit" action:@selector(quit:) keyEquivalent:@"" atIndex:2];
     }
 }
 
@@ -206,15 +216,6 @@
     [NSApp performSelector:@selector(terminate:) withObject:nil afterDelay:0.0];
 }
 
--(void)displayMissingInstancesMsg {
-    [missingInstancesDescription setHidden:TRUE];
-}
-
--(void)hideMenus {
-    [installedInstancesSeparator setHidden:TRUE];
-    [refreshMenu setHidden:TRUE];
-}
-
 - (IBAction)telnet:sender {
     InterSystemsInstance *instance = [sender representedObject];
     
@@ -312,10 +313,10 @@
     [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://localhost:%@/csp/documatic/%%25CSP.Documatic.cls", port]]];
 }
 
--(void)createMenus:(NSMutableArray *)array {
+-(void)createMenus {
     NSUInteger index = 0;
     InterSystemsInstance *instance;
-    NSMenu *subMenu;
+    NSMenuItem *item;
     NSMenuItem *portalMenuItem;
     NSMenuItem *docsMenuItem;
     NSMenuItem *referencesMenuItem;
@@ -324,17 +325,24 @@
     NSMenuItem *startStopMenuItem;
     NSMenuItem *restartMenuItem;
     NSMenuItem *autoStartMenuItem;
-    BOOL isDir;
+    NSMenuItem *refreshMenuItem;
+    NSMenu *subMenu;
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSString *status;
-    NSMenuItem *item;
+    BOOL isDir;
     
-    for (id object in array) {
+    // Reset menu
+    [instancesMenu init];
+    
+    [instancesMenu insertItemWithTitle:@"No instances installed" action:nil keyEquivalent:@"" atIndex:index];
+    [instancesMenu insertItem:[NSMenuItem separatorItem] atIndex:++index];
+    
+    for (id object in instancesList) {
         instance = [[InterSystemsInstance alloc] init];
         instance = object;
 
         // Create menu
-        item = [instancesMenu insertItemWithTitle:instance.name action:nil keyEquivalent:@"" atIndex:index];
+        item = [instancesMenu insertItemWithTitle:instance.name action:nil keyEquivalent:@"" atIndex:++index];
         [item setOnStateImage:[NSImage imageNamed:NSImageNameStatusAvailable]];
         [item setOffStateImage:[NSImage imageNamed:NSImageNameStatusUnavailable]];
         [item setMixedStateImage:[NSImage imageNamed:NSImageNameStatusUnavailable]];
@@ -442,8 +450,16 @@
         
         [instance release];
         [subMenu release];
-        index++;
     }
+    
+    if (index > 1) {
+        [instancesMenu insertItem:[NSMenuItem separatorItem] atIndex:++index];
+    }
+    
+    refreshMenuItem = [instancesMenu insertItemWithTitle:@"Refresh" action:@selector(validateInstallationFiles) keyEquivalent:@"" atIndex:++index];
+    
+    [instancesMenu insertItem:[NSMenuItem separatorItem] atIndex:++index];
+    [instancesMenu insertItemWithTitle:@"Quit" action:@selector(quit:) keyEquivalent:@"" atIndex:++index];
 }
 
 - (void)dealloc
