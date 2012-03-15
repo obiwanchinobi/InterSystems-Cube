@@ -327,23 +327,28 @@
     BOOL isDir;
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSString *status;
+    NSMenuItem *item;
     
     for (id object in array) {
         instance = [[InterSystemsInstance alloc] init];
         instance = object;
 
         // Create menu
-        NSMenuItem *item = [instancesMenu insertItemWithTitle:instance.name action:nil keyEquivalent:@"" atIndex:index];
+        item = [instancesMenu insertItemWithTitle:instance.name action:nil keyEquivalent:@"" atIndex:index];
+        [item setOnStateImage:[NSImage imageNamed:NSImageNameStatusAvailable]];
+        [item setOffStateImage:[NSImage imageNamed:NSImageNameStatusUnavailable]];
+        [item setMixedStateImage:[NSImage imageNamed:NSImageNameStatusUnavailable]];
+        
         [item setTarget:self]; // or whatever target you want
 
         if ([instance.status isEqualToString: Started]) {
-            [item setImage:[NSImage imageNamed:NSImageNameStatusAvailable]];
+            [item setState:NSOnState];
         }
         else if ([instance.status isEqualToString: Stopped]) {
-            [item setImage:[NSImage imageNamed:NSImageNameStatusUnavailable]];
+            [item setState:NSOffState];
         }
         else {
-            [item setImage:[NSImage imageNamed:NSImageNameStatusPartiallyAvailable]];
+            [item setState:NSMixedState];
         }
         
         subMenu = [[NSMenu alloc] init];
