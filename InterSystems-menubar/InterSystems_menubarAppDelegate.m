@@ -267,7 +267,8 @@
             [portalMenuItem setAction:@selector(launchPortal:)];
             [docsMenuItem setAction:@selector(launchDocs:)];
             [referencesMenuItem setAction:@selector(launchReferences:)];
-            [[sender parentItem] setImage:[NSImage imageNamed:NSImageNameStatusAvailable]];
+            [[sender parentItem] setState:NSOnState];
+//            [[sender parentItem] setImage:[NSImage imageNamed:NSImageNameStatusAvailable]];
         }
         else if ([instance.status isEqualToString:Stopped]) {
             [sender setTitle:@"Start Instance"];
@@ -276,9 +277,13 @@
             [portalMenuItem setAction:nil];
             [docsMenuItem setAction:nil];
             [referencesMenuItem setAction:nil];
-            [[sender parentItem] setImage:[NSImage imageNamed:NSImageNameStatusUnavailable]];
+            [[sender parentItem] setState:NSOffState];
+//            [[sender parentItem] setImage:[NSImage imageNamed:NSImageNameStatusUnavailable]];
         }
         else {
+            [[sender parentItem] setState:NSMixedState];
+//            [[sender parentItem] setImage:[NSImage imageNamed:NSImageNameStatusPartiallyAvailable]];
+            
             NSLog(@"Instance is niether running or down");
         }
     }
@@ -345,7 +350,7 @@
         item = [instancesMenu insertItemWithTitle:instance.name action:nil keyEquivalent:@"" atIndex:++index];
         [item setOnStateImage:[NSImage imageNamed:NSImageNameStatusAvailable]];
         [item setOffStateImage:[NSImage imageNamed:NSImageNameStatusUnavailable]];
-        [item setMixedStateImage:[NSImage imageNamed:NSImageNameStatusUnavailable]];
+        [item setMixedStateImage:[NSImage imageNamed:NSImageNameStatusPartiallyAvailable]];
         
         [item setTarget:self]; // or whatever target you want
 
