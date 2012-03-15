@@ -254,18 +254,27 @@
     InterSystemsInstance *instance = [dict objectForKey:@"instance"];
     NSMenuItem *telnetMenuItem = [dict objectForKey:@"telnet"];
     NSMenuItem *restartMenuItem = [dict objectForKey:@"restart"];
+    NSMenuItem *portalMenuItem = [dict objectForKey:@"portal"];
+    NSMenuItem *docsMenuItem = [dict objectForKey:@"docs"];
+    NSMenuItem *referencesMenuItem = [dict objectForKey:@"references"];
     
     if ([CControl startStopInstance:instance] == TRUE) {
         if ([instance.status isEqualToString:Started]) {
             [sender setTitle:@"Stop Instance"];
             [telnetMenuItem setAction:@selector(telnet:)];
             [restartMenuItem setAction:@selector(restartInstance:)];
+            [portalMenuItem setAction:@selector(launchPortal:)];
+            [docsMenuItem setAction:@selector(launchDocs:)];
+            [referencesMenuItem setAction:@selector(launchReferences:)];
             [[sender parentItem] setImage:[NSImage imageNamed:NSImageNameStatusAvailable]];
         }
         else if ([instance.status isEqualToString:Stopped]) {
             [sender setTitle:@"Start Instance"];
             [telnetMenuItem setAction:nil];
             [restartMenuItem setAction:nil];
+            [portalMenuItem setAction:nil];
+            [docsMenuItem setAction:nil];
+            [referencesMenuItem setAction:nil];
             [[sender parentItem] setImage:[NSImage imageNamed:NSImageNameStatusUnavailable]];
         }
         else {
@@ -282,10 +291,34 @@
     [CControl restartInstance:instance];
 }
 
+- (IBAction)launchPortal:sender {
+    InterSystemsInstance *instance = [sender representedObject];
+    NSString *port = instance.webServerPort;
+
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://localhost:%@/csp/sys/UtilHome.csp", port]]];
+}
+
+- (IBAction)launchDocs:sender {
+    InterSystemsInstance *instance = [sender representedObject];
+    NSString *port = instance.webServerPort;
+    
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://localhost:%@/csp/docbook/DocBook.UI.HomePageZen.cls", port]]];
+}
+
+- (IBAction)launchReferences:sender {
+    InterSystemsInstance *instance = [sender representedObject];
+    NSString *port = instance.webServerPort;
+
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://localhost:%@/csp/documatic/%%25CSP.Documatic.cls", port]]];
+}
+
 -(void)createMenus:(NSMutableArray *)array {
     NSUInteger index = 0;
     InterSystemsInstance *instance;
     NSMenu *subMenu;
+    NSMenuItem *portalMenuItem;
+    NSMenuItem *docsMenuItem;
+    NSMenuItem *referencesMenuItem;
     NSMenuItem *telnetMenuItem;
     NSMenuItem *openDirMenuItem;
     NSMenuItem *startStopMenuItem;
@@ -317,6 +350,32 @@
         
         // version submenu
         [subMenu addItemWithTitle:instance.version action:nil keyEquivalent:@""];
+        [subMenu addItem:[NSMenuItem separatorItem]];
+        
+        // urls
+        if ([InterSystemsInstance isInstanceRunning:instance]) {
+            portalMenuItem = [subMenu addItemWithTitle:@"Management Portal" action:@selector(launchPortal:) keyEquivalent:@""];
+        }
+        else {
+            portalMenuItem = [subMenu addItemWithTitle:@"Management Portal" action:nil keyEquivalent:@""];
+        }
+        [portalMenuItem setRepresentedObject:instance];
+        
+        if ([InterSystemsInstance isInstanceRunning:instance]) {
+            docsMenuItem = [subMenu addItemWithTitle:@"Documentation" action:@selector(launchDocs:) keyEquivalent:@""];
+        }
+        else {
+            docsMenuItem = [subMenu addItemWithTitle:@"Documentation" action:nil keyEquivalent:@""];
+        }
+        [docsMenuItem setRepresentedObject:instance];
+        
+        if ([InterSystemsInstance isInstanceRunning:instance]) {
+            referencesMenuItem = [subMenu addItemWithTitle:@"Class References" action:@selector(launchReferences:) keyEquivalent:@""];
+        }
+        else {
+            referencesMenuItem = [subMenu addItemWithTitle:@"Class References" action:nil keyEquivalent:@""];
+        }
+        [referencesMenuItem setRepresentedObject:instance];
         
         [subMenu addItem:[NSMenuItem separatorItem]];
         
@@ -357,7 +416,15 @@
         [restartMenuItem setRepresentedObject:instance];
         
         // setup objects for start/stop submenu
-        [startStopMenuItem setRepresentedObject:[NSDictionary dictionaryWithObjectsAndKeys:instance, @"instance", telnetMenuItem, @"telnet", restartMenuItem, @"restart", nil]];
+        [startStopMenuItem setRepresentedObject:
+            [NSDictionary dictionaryWithObjectsAndKeys:
+                instance, @"instance",
+                telnetMenuItem, @"telnet",
+                restartMenuItem, @"restart",
+                portalMenuItem, @"portal", 
+                docsMenuItem, @"docs", 
+                referencesMenuItem, @"references", 
+             nil]];
         
         // autostart submenu
         autoStartMenuItem = [subMenu addItemWithTitle:@"Autostart on System Startup" action:nil keyEquivalent:@""];

@@ -29,6 +29,9 @@
 - (IBAction)openDirectory:sender;
 - (IBAction)startStopInstance:sender;
 - (IBAction)restartInstance:sender;
+- (IBAction)launchPortal:sender;
+- (IBAction)launchDocs:sender;
+- (IBAction)launchReferences:sender;
     
 - (void)awakeFromNib;
 - (void)displayMissingInstancesMsg;
