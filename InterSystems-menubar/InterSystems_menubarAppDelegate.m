@@ -339,15 +339,12 @@
     // Reset menu
     [instancesMenu init];
     
-    [instancesMenu insertItemWithTitle:@"No instances installed" action:nil keyEquivalent:@"" atIndex:index];
-    [instancesMenu insertItem:[NSMenuItem separatorItem] atIndex:++index];
-    
     for (id object in instancesList) {
         instance = [[InterSystemsInstance alloc] init];
         instance = object;
 
         // Create menu
-        item = [instancesMenu insertItemWithTitle:instance.name action:nil keyEquivalent:@"" atIndex:++index];
+        item = [instancesMenu insertItemWithTitle:instance.name action:nil keyEquivalent:@"" atIndex:index++];
         [item setOnStateImage:[NSImage imageNamed:NSImageNameStatusAvailable]];
         [item setOffStateImage:[NSImage imageNamed:NSImageNameStatusUnavailable]];
         [item setMixedStateImage:[NSImage imageNamed:NSImageNameStatusPartiallyAvailable]];
@@ -458,13 +455,13 @@
     }
     
     if (index > 1) {
-        [instancesMenu insertItem:[NSMenuItem separatorItem] atIndex:++index];
+        [instancesMenu insertItem:[NSMenuItem separatorItem] atIndex:index++];
     }
     
-    refreshMenuItem = [instancesMenu insertItemWithTitle:@"Refresh" action:@selector(validateInstallationFiles) keyEquivalent:@"" atIndex:++index];
+    refreshMenuItem = [instancesMenu insertItemWithTitle:@"Refresh" action:@selector(validateInstallationFiles) keyEquivalent:@"" atIndex:index++];
     
-    [instancesMenu insertItem:[NSMenuItem separatorItem] atIndex:++index];
-    [instancesMenu insertItemWithTitle:@"Quit" action:@selector(quit:) keyEquivalent:@"" atIndex:++index];
+    [instancesMenu insertItem:[NSMenuItem separatorItem] atIndex:index++];
+    [instancesMenu insertItemWithTitle:@"Quit" action:@selector(quit:) keyEquivalent:@"" atIndex:index++];
 }
 
 - (void)dealloc
