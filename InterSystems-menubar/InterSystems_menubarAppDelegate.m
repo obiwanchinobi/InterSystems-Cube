@@ -367,7 +367,15 @@
         [subMenu addItemWithTitle:instance.version action:nil keyEquivalent:@""];
         [subMenu addItem:[NSMenuItem separatorItem]];
         
-        // urls
+        // csession submenu
+        if ([InterSystemsInstance isInstanceRunning:instance]) {
+            telnetMenuItem = [subMenu addItemWithTitle:@"Telnet session" action:@selector(telnet:) keyEquivalent:@""];
+        }
+        else {
+            telnetMenuItem = [subMenu addItemWithTitle:@"Telnet session" action:nil keyEquivalent:@""];
+        }
+        [telnetMenuItem setRepresentedObject:instance];
+        
         if ([InterSystemsInstance isInstanceRunning:instance]) {
             portalMenuItem = [subMenu addItemWithTitle:@"Management Portal" action:@selector(launchPortal:) keyEquivalent:@""];
         }
@@ -376,34 +384,6 @@
         }
         [portalMenuItem setRepresentedObject:instance];
         
-        if ([InterSystemsInstance isInstanceRunning:instance]) {
-            docsMenuItem = [subMenu addItemWithTitle:@"Documentation" action:@selector(launchDocs:) keyEquivalent:@""];
-        }
-        else {
-            docsMenuItem = [subMenu addItemWithTitle:@"Documentation" action:nil keyEquivalent:@""];
-        }
-        [docsMenuItem setRepresentedObject:instance];
-        
-        if ([InterSystemsInstance isInstanceRunning:instance]) {
-            referencesMenuItem = [subMenu addItemWithTitle:@"Class References" action:@selector(launchReferences:) keyEquivalent:@""];
-        }
-        else {
-            referencesMenuItem = [subMenu addItemWithTitle:@"Class References" action:nil keyEquivalent:@""];
-        }
-        [referencesMenuItem setRepresentedObject:instance];
-        
-        [subMenu addItem:[NSMenuItem separatorItem]];
-        
-        // csession submenu
-        if ([InterSystemsInstance isInstanceRunning:instance]) {
-            telnetMenuItem = [subMenu addItemWithTitle:@"Open Telnet session" action:@selector(telnet:) keyEquivalent:@""];
-        }
-        else {
-            telnetMenuItem = [subMenu addItemWithTitle:@"Open Telnet session" action:nil keyEquivalent:@""];
-        }
-        [telnetMenuItem setRepresentedObject:instance];
-        
-        // directory submenu
         openDirMenuItem = [subMenu addItemWithTitle:@"Open Installation directory" action:@selector(openDirectory:) keyEquivalent:@""];
         [openDirMenuItem setRepresentedObject:instance];
         
@@ -449,6 +429,25 @@
         }
         
         [item setSubmenu:subMenu];
+        
+        [subMenu addItem:[NSMenuItem separatorItem]];
+        
+        // urls submenu
+        if ([InterSystemsInstance isInstanceRunning:instance]) {
+            docsMenuItem = [subMenu addItemWithTitle:@"Documentation" action:@selector(launchDocs:) keyEquivalent:@""];
+        }
+        else {
+            docsMenuItem = [subMenu addItemWithTitle:@"Documentation" action:nil keyEquivalent:@""];
+        }
+        [docsMenuItem setRepresentedObject:instance];
+        
+        if ([InterSystemsInstance isInstanceRunning:instance]) {
+            referencesMenuItem = [subMenu addItemWithTitle:@"Class References" action:@selector(launchReferences:) keyEquivalent:@""];
+        }
+        else {
+            referencesMenuItem = [subMenu addItemWithTitle:@"Class References" action:nil keyEquivalent:@""];
+        }
+        [referencesMenuItem setRepresentedObject:instance];
         
         [instance release];
         [subMenu release];
