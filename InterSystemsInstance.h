@@ -23,5 +23,7 @@
 @property (copy) NSString* webServerPort;
 
 + (BOOL)isInstanceRunning:(InterSystemsInstance *)instance;
++ (BOOL)isStartupScriptInstalled:(NSString *)instanceName;
++ (BOOL)isStartupScriptDisabled:(NSString *)instanceName;
 
 @end

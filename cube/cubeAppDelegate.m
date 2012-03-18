@@ -324,7 +324,45 @@
     [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://localhost:%@/csp/documatic/%%25CSP.Documatic.cls", port]]];
 }
 
-- (IBAction)startAtLogin:sender {
+- (IBAction)toggleInstanceAutoStart:sender {
+    InterSystemsInstance *instance = [sender representedObject];
+    
+    // Get authorization
+    AuthorizationRef authRef = [self createAuthRef];
+    if (authRef == NULL) {
+        NSLog(@"Authorization failed");
+        return;
+    }
+    
+    // Bless Helper
+    NSError *error = nil;
+    if (![self blessHelperWithLabel:@"com.InterSystems.CubeHelper" withAuthRef:authRef error:&error]) {
+        NSLog(@"Bless Error: %@",error);
+        return;
+    }
+    
+    // Connect to Helper
+    NSLog(@"Connecting to Helper");
+    NSConnection *c = [NSConnection connectionWithRegisteredName:@"com.InterSystems.CubeHelper.mach" host:nil]; 
+    PrivilegedActions *proxy = (PrivilegedActions *)[c rootProxy];
+    
+    if ([InterSystemsInstance isStartupScriptInstalled:instance.name] == FALSE) {
+        [proxy createAutoStartFiles:instance];
+        [sender setState:NSOnState];
+    }
+    else {
+        if ([InterSystemsInstance isStartupScriptDisabled:instance.name] == TRUE) {
+            [proxy toggleInstanceAutoStart:instance:TRUE];
+            [sender setState:NSOnState];
+        }
+        else {
+            [proxy toggleInstanceAutoStart:instance:FALSE];
+            [sender setState:NSOffState];
+        }
+    }
+}
+    
+- (IBAction)toggleAutoStartAtLogin:sender {
     NSString * appPath = [[NSBundle mainBundle] bundlePath];
 	
 	// Create a reference to the shared file list.
@@ -406,13 +444,11 @@
     NSMenuItem *openDirMenuItem;
     NSMenuItem *startStopMenuItem;
     NSMenuItem *restartMenuItem;
-    NSMenuItem *autoStartMenuItem;
+    NSMenuItem *toggleInstanceAutoStartMenuItem;
     NSMenuItem *refreshMenuItem;
-    NSMenuItem *loginMenuItem;
+    NSMenuItem *toggleAutoStartAtLoginMenuItem;
     NSMenu *subMenu;
-    NSFileManager *fileManager = [NSFileManager defaultManager];
     NSString *status;
-    BOOL isDir;
     
     NSString * appPath = [[NSBundle mainBundle] bundlePath];
     
@@ -502,10 +538,13 @@
              nil]];
         
         // autostart submenu
-        autoStartMenuItem = [subMenu addItemWithTitle:@"Autostart on System Startup" action:nil keyEquivalent:@""];
+        toggleInstanceAutoStartMenuItem = [subMenu addItemWithTitle:@"Autostart on System Startup" action:@selector(toggleInstanceAutoStart:) keyEquivalent:@""];
+        [toggleInstanceAutoStartMenuItem setRepresentedObject:instance];
         
-        if ([fileManager fileExistsAtPath:[NSString stringWithFormat:@"/Library/StartupItems/%@", instance.name] isDirectory:&isDir] && isDir) {
-            [autoStartMenuItem setState:NSOnState];
+        if ([InterSystemsInstance isStartupScriptInstalled:instance.name] == TRUE) {
+            if ([InterSystemsInstance isStartupScriptDisabled:instance.name] == FALSE) {
+                [toggleInstanceAutoStartMenuItem setState:NSOnState];
+            }
         }
         
         [item setSubmenu:subMenu];
@@ -540,16 +579,40 @@
     refreshMenuItem = [instancesMenu insertItemWithTitle:@"Refresh" action:@selector(validateInstallationFiles) keyEquivalent:@"" atIndex:index++];
     [instancesMenu insertItem:[NSMenuItem separatorItem] atIndex:index++];
     
-    loginMenuItem = [instancesMenu insertItemWithTitle:@"Start at Login" action:@selector(startAtLogin:) keyEquivalent:@"" atIndex:index++];
+    toggleAutoStartAtLoginMenuItem = [instancesMenu insertItemWithTitle:@"Start at Login" action:@selector(toggleAutoStartAtLogin:) keyEquivalent:@"" atIndex:index++];
     LSSharedFileListRef loginItems = LSSharedFileListCreate(NULL, kLSSharedFileListSessionLoginItems, NULL);
 	if ([self loginItemExistsWithLoginItemReference:loginItems ForPath:appPath]) {
-		[loginMenuItem setState:NSOnState];
+		[toggleAutoStartAtLoginMenuItem setState:NSOnState];
 	}
 	CFRelease(loginItems);
     
     [instancesMenu insertItem:[NSMenuItem separatorItem] atIndex:index++];
     
     [instancesMenu insertItemWithTitle:@"Quit" action:@selector(quit:) keyEquivalent:@"" atIndex:index++];
+}
+
+- (AuthorizationRef)createAuthRef
+{
+    AuthorizationRef authRef = NULL;
+    AuthorizationItem authItem = { kSMRightBlessPrivilegedHelper, 0, NULL, 0 };
+    AuthorizationRights authRights = { 1, &authItem };
+    AuthorizationFlags flags = kAuthorizationFlagDefaults | kAuthorizationFlagInteractionAllowed | kAuthorizationFlagPreAuthorize | kAuthorizationFlagExtendRights;
+    
+    OSStatus status = AuthorizationCreate(&authRights, kAuthorizationEmptyEnvironment, flags, &authRef);
+    if (status != errAuthorizationSuccess) {
+        NSLog(@"Failed to create AuthorizationRef, return code %i", status);
+    }
+    
+    return authRef;
+}
+
+- (BOOL)blessHelperWithLabel:(NSString *)label withAuthRef:(AuthorizationRef)authRef error:(NSError **)error
+{
+    CFErrorRef err;
+    BOOL result = SMJobBless(kSMDomainSystemLaunchd, (CFStringRef)label, authRef, &err);
+    *error = (NSError *)err;
+    
+    return result;
 }
 
 - (void)dealloc

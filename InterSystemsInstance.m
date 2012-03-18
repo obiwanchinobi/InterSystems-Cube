@@ -33,4 +33,18 @@
     return FALSE;
 }
 
++ (BOOL)isStartupScriptInstalled:(NSString *)instanceName {
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    BOOL isDir;
+    
+    return ([fileManager fileExistsAtPath:[NSString stringWithFormat:@"/Library/StartupItems/%@", instanceName] isDirectory:&isDir] && isDir);
+}
+
++ (BOOL)isStartupScriptDisabled:(NSString *)instanceName {
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    BOOL isDir;
+    
+    return ([fileManager fileExistsAtPath:[NSString stringWithFormat:@"/Library/StartupItems/%@/.disabled", instanceName] isDirectory:&isDir] && !isDir);
+}
+
 @end

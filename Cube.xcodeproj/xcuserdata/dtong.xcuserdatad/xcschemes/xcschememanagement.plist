@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>CubeHelper.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 		<key>InterSystems-menubar.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -12,6 +17,11 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>BF207B0F151AF7F900DD0602</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>BFF889411505E53C007B4A9B</key>
 		<dict>
 			<key>primary</key>
