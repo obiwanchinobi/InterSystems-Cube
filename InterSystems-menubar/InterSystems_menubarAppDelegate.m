@@ -204,8 +204,14 @@
 }
 
 -(void)awakeFromNib {
-    NSImage *instancesImage = [NSImage imageNamed:@"cube_16.png"];
+    NSImage *instancesImage = [NSImage imageNamed:@"cube.png"];
     instancesItem = [[[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength] retain];
+    
+    //Use SetTemplate to set image as template.
+    //This image should uses only black and clear colors.
+    //Click over a template image in statusBar converts black color in white and alpha channel in blue.
+    [instancesImage setTemplate:YES];
+    
     [instancesItem setMenu:instancesMenu];
     [instancesItem setImage:instancesImage];
     [instancesItem setToolTip:@"Manage InterSystems Instances"];

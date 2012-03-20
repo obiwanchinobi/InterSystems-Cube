@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		BF3C5994150619EA003DC7F4 /* InterSystemsInstance.m in Sources */ = {isa = PBXBuildFile; fileRef = BF3C5993150619EA003DC7F4 /* InterSystemsInstance.m */; };
 		BF3C599715061AB2003DC7F4 /* CControl.m in Sources */ = {isa = PBXBuildFile; fileRef = BF3C599615061AB2003DC7F4 /* CControl.m */; };
+		BFF80ED71518C06200B56E89 /* cube.png in Resources */ = {isa = PBXBuildFile; fileRef = BFF80ED51518C06200B56E89 /* cube.png */; };
 		BFF889471505E53C007B4A9B /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFF889461505E53C007B4A9B /* Cocoa.framework */; };
 		BFF889511505E53C007B4A9B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BFF8894F1505E53C007B4A9B /* InfoPlist.strings */; };
 		BFF889541505E53C007B4A9B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BFF889531505E53C007B4A9B /* main.m */; };
@@ -16,7 +17,6 @@
 		BFF8895A1505E53C007B4A9B /* InterSystems_menubarAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BFF889591505E53C007B4A9B /* InterSystems_menubarAppDelegate.m */; };
 		BFF8895D1505E53C007B4A9B /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = BFF8895B1505E53C007B4A9B /* MainMenu.xib */; };
 		BFF889601505E53C007B4A9B /* InterSystems_menubar.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BFF8895E1505E53C007B4A9B /* InterSystems_menubar.xcdatamodeld */; };
-		BFF889711505EEA9007B4A9B /* cube_16.png in Resources */ = {isa = PBXBuildFile; fileRef = BFF889701505EEA9007B4A9B /* cube_16.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +24,7 @@
 		BF3C5993150619EA003DC7F4 /* InterSystemsInstance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InterSystemsInstance.m; sourceTree = "<group>"; };
 		BF3C599515061AB2003DC7F4 /* CControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CControl.h; sourceTree = "<group>"; };
 		BF3C599615061AB2003DC7F4 /* CControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CControl.m; sourceTree = "<group>"; };
+		BFF80ED51518C06200B56E89 /* cube.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cube.png; sourceTree = "<group>"; };
 		BFF889421505E53C007B4A9B /* InterSystems-menubar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "InterSystems-menubar.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFF889461505E53C007B4A9B /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		BFF889491505E53C007B4A9B /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -38,7 +39,6 @@
 		BFF889591505E53C007B4A9B /* InterSystems_menubarAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InterSystems_menubarAppDelegate.m; sourceTree = "<group>"; };
 		BFF8895C1505E53C007B4A9B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		BFF8895F1505E53C007B4A9B /* InterSystems_menubar.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = InterSystems_menubar.xcdatamodel; sourceTree = "<group>"; };
-		BFF889701505EEA9007B4A9B /* cube_16.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cube_16.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,7 +118,7 @@
 		BFF889661505E753007B4A9B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				BFF889701505EEA9007B4A9B /* cube_16.png */,
+				BFF80ED51518C06200B56E89 /* cube.png */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -187,7 +187,7 @@
 				BFF889511505E53C007B4A9B /* InfoPlist.strings in Resources */,
 				BFF889571505E53C007B4A9B /* Credits.rtf in Resources */,
 				BFF8895D1505E53C007B4A9B /* MainMenu.xib in Resources */,
-				BFF889711505EEA9007B4A9B /* cube_16.png in Resources */,
+				BFF80ED71518C06200B56E89 /* cube.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
