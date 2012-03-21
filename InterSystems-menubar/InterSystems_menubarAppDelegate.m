@@ -324,6 +324,77 @@
     [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://localhost:%@/csp/documatic/%%25CSP.Documatic.cls", port]]];
 }
 
+- (IBAction)startAtLogin:sender {
+    NSString * appPath = [[NSBundle mainBundle] bundlePath];
+	
+	// Create a reference to the shared file list.
+	LSSharedFileListRef loginItems = LSSharedFileListCreate(NULL, kLSSharedFileListSessionLoginItems, NULL);
+	if (loginItems) {
+		if ([sender state] == NSOnState) {
+        	[self disableLoginItemWithLoginItemsReference:loginItems ForPath:appPath];
+            [sender setState:NSOffState];
+        }
+		else {
+            [self enableLoginItemWithLoginItemsReference:loginItems ForPath:appPath];
+            [sender setState:NSOnState];
+        }
+	}
+	CFRelease(loginItems);
+}
+
+- (void)enableLoginItemWithLoginItemsReference:(LSSharedFileListRef )theLoginItemsRefs ForPath:(NSString *)appPath {
+	// We call LSSharedFileListInsertItemURL to insert the item at the bottom of Login Items list.
+	CFURLRef url = (CFURLRef)[NSURL fileURLWithPath:appPath];
+	LSSharedFileListItemRef item = LSSharedFileListInsertItemURL(theLoginItemsRefs, kLSSharedFileListItemLast, NULL, NULL, url, NULL, NULL);		
+	if (item)
+		CFRelease(item);
+}
+
+- (void)disableLoginItemWithLoginItemsReference:(LSSharedFileListRef )theLoginItemsRefs ForPath:(NSString *)appPath {
+	UInt32 seedValue;
+	CFURLRef thePath = NULL;
+	// We're going to grab the contents of the shared file list (LSSharedFileListItemRef objects)
+	// and pop it in an array so we can iterate through it to find our item.
+	CFArrayRef loginItemsArray = LSSharedFileListCopySnapshot(theLoginItemsRefs, &seedValue);
+	for (id item in (NSArray *)loginItemsArray) {		
+		LSSharedFileListItemRef itemRef = (LSSharedFileListItemRef)item;
+		if (LSSharedFileListItemResolve(itemRef, 0, (CFURLRef*) &thePath, NULL) == noErr) {
+			if ([[(NSURL *)thePath path] hasPrefix:appPath]) {
+				LSSharedFileListItemRemove(theLoginItemsRefs, itemRef); // Deleting the item
+			}
+			// Docs for LSSharedFileListItemResolve say we're responsible
+			// for releasing the CFURLRef that is returned
+			if (thePath != NULL) CFRelease(thePath);
+		}		
+	}
+	if (loginItemsArray != NULL) CFRelease(loginItemsArray);
+}
+
+- (BOOL)loginItemExistsWithLoginItemReference:(LSSharedFileListRef)theLoginItemsRefs ForPath:(NSString *)appPath {
+	BOOL found = NO;  
+	UInt32 seedValue;
+	CFURLRef thePath = NULL;
+	
+	// We're going to grab the contents of the shared file list (LSSharedFileListItemRef objects)
+	// and pop it in an array so we can iterate through it to find our item.
+	CFArrayRef loginItemsArray = LSSharedFileListCopySnapshot(theLoginItemsRefs, &seedValue);
+	for (id item in (NSArray *)loginItemsArray) {    
+		LSSharedFileListItemRef itemRef = (LSSharedFileListItemRef)item;
+		if (LSSharedFileListItemResolve(itemRef, 0, (CFURLRef*) &thePath, NULL) == noErr) {
+			if ([[(NSURL *)thePath path] hasPrefix:appPath]) {
+				found = YES;
+				break;
+			}
+            // Docs for LSSharedFileListItemResolve say we're responsible
+            // for releasing the CFURLRef that is returned
+            if (thePath != NULL) CFRelease(thePath);
+		}
+	}
+	if (loginItemsArray != NULL) CFRelease(loginItemsArray);
+	
+	return found;
+}
+
 -(void)createMenus {
     NSUInteger index = 0;
     InterSystemsInstance *instance;
@@ -342,6 +413,8 @@
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSString *status;
     BOOL isDir;
+    
+    NSString * appPath = [[NSBundle mainBundle] bundlePath];
     
     // Reset menu
     [instancesMenu init];
@@ -467,7 +540,13 @@
     refreshMenuItem = [instancesMenu insertItemWithTitle:@"Refresh" action:@selector(validateInstallationFiles) keyEquivalent:@"" atIndex:index++];
     [instancesMenu insertItem:[NSMenuItem separatorItem] atIndex:index++];
     
-    loginMenuItem = [instancesMenu insertItemWithTitle:@"Start at Login" action:@selector(validateInstallationFiles) keyEquivalent:@"" atIndex:index++];
+    loginMenuItem = [instancesMenu insertItemWithTitle:@"Start at Login" action:@selector(startAtLogin:) keyEquivalent:@"" atIndex:index++];
+    LSSharedFileListRef loginItems = LSSharedFileListCreate(NULL, kLSSharedFileListSessionLoginItems, NULL);
+	if ([self loginItemExistsWithLoginItemReference:loginItems ForPath:appPath]) {
+		[loginMenuItem setState:NSOnState];
+	}
+	CFRelease(loginItems);
+    
     [instancesMenu insertItem:[NSMenuItem separatorItem] atIndex:index++];
     
     [instancesMenu insertItemWithTitle:@"Quit" action:@selector(quit:) keyEquivalent:@"" atIndex:index++];

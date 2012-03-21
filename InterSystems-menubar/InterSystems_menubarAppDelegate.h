@@ -29,9 +29,14 @@
 - (IBAction)launchPortal:sender;
 - (IBAction)launchDocs:sender;
 - (IBAction)launchReferences:sender;
+- (IBAction)startAtLogin:sender;
     
 - (void)awakeFromNib;
 - (void)validateInstallationFiles;
 - (void)createMenus;
+
+- (void)enableLoginItemWithLoginItemsReference:(LSSharedFileListRef )theLoginItemsRefs ForPath:(NSString *)appPath;
+- (void)disableLoginItemWithLoginItemsReference:(LSSharedFileListRef )theLoginItemsRefs ForPath:(NSString *)appPath;
+- (BOOL)loginItemExistsWithLoginItemReference:(LSSharedFileListRef)theLoginItemsRefs ForPath:(NSString *)appPath;
 
 @end
