@@ -121,11 +121,12 @@ NSString * const Stopped = @"down";
     if (status == 0) {
         if ([instance.status isEqualToString:Started]) {
             instance.status = Stopped;
+            NSLog(@"Successfully stopped %@", instance.name);
         }
         else if ([instance.status isEqualToString:Stopped]) {
             instance.status = Started;
+            NSLog(@"Successfully started %@", instance.name);
         }
-        NSLog(@"Successfully %@ed %@", action, instance.name);
         return TRUE;
     }
     else {
