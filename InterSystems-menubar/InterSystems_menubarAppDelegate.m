@@ -448,10 +448,10 @@
         [docsMenuItem setRepresentedObject:instance];
         
         if ([InterSystemsInstance isInstanceRunning:instance]) {
-            referencesMenuItem = [subMenu addItemWithTitle:@"Class References" action:@selector(launchReferences:) keyEquivalent:@""];
+            referencesMenuItem = [subMenu addItemWithTitle:@"Class Reference" action:@selector(launchReferences:) keyEquivalent:@""];
         }
         else {
-            referencesMenuItem = [subMenu addItemWithTitle:@"Class References" action:nil keyEquivalent:@""];
+            referencesMenuItem = [subMenu addItemWithTitle:@"Class Reference" action:nil keyEquivalent:@""];
         }
         [referencesMenuItem setRepresentedObject:instance];
         
