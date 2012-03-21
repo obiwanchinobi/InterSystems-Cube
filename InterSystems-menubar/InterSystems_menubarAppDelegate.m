@@ -337,6 +337,7 @@
     NSMenuItem *restartMenuItem;
     NSMenuItem *autoStartMenuItem;
     NSMenuItem *refreshMenuItem;
+    NSMenuItem *loginMenuItem;
     NSMenu *subMenu;
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSString *status;
@@ -464,8 +465,11 @@
     }
     
     refreshMenuItem = [instancesMenu insertItemWithTitle:@"Refresh" action:@selector(validateInstallationFiles) keyEquivalent:@"" atIndex:index++];
-    
     [instancesMenu insertItem:[NSMenuItem separatorItem] atIndex:index++];
+    
+    loginMenuItem = [instancesMenu insertItemWithTitle:@"Start at Login" action:@selector(validateInstallationFiles) keyEquivalent:@"" atIndex:index++];
+    [instancesMenu insertItem:[NSMenuItem separatorItem] atIndex:index++];
+    
     [instancesMenu insertItemWithTitle:@"Quit" action:@selector(quit:) keyEquivalent:@"" atIndex:index++];
 }
 
