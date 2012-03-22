@@ -1,6 +1,6 @@
-#import "InterSystems_menubarAppDelegate.h"
+#import "cubeAppDelegate.h"
 
-@implementation InterSystems_menubarAppDelegate
+@implementation cubeAppDelegate
 
 @synthesize window;
 
@@ -32,13 +32,13 @@
 }
 
 /**
-    Returns the directory the application uses to store the Core Data store file. This code uses a directory named "InterSystems_menubar" in the user's Library directory.
+    Returns the directory the application uses to store the Core Data store file. This code uses a directory named "cube" in the user's Library directory.
  */
 - (NSURL *)applicationFilesDirectory {
 
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSURL *libraryURL = [[fileManager URLsForDirectory:NSLibraryDirectory inDomains:NSUserDomainMask] lastObject];
-    return [libraryURL URLByAppendingPathComponent:@"InterSystems_menubar"];
+    return [libraryURL URLByAppendingPathComponent:@"cube"];
 }
 
 /**
@@ -49,7 +49,7 @@
         return __managedObjectModel;
     }
 	
-    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"InterSystems_menubar" withExtension:@"momd"];
+    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"cube" withExtension:@"momd"];
     __managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];    
     return __managedObjectModel;
 }
@@ -98,7 +98,7 @@
         }
     }
     
-    NSURL *url = [applicationFilesDirectory URLByAppendingPathComponent:@"InterSystems_menubar.storedata"];
+    NSURL *url = [applicationFilesDirectory URLByAppendingPathComponent:@"cube.storedata"];
     __persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:mom];
     if (![__persistentStoreCoordinator addPersistentStoreWithType:NSXMLStoreType configuration:nil URL:url options:nil error:&error]) {
         [[NSApplication sharedApplication] presentError:error];

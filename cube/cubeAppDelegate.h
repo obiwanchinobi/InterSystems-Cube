@@ -1,7 +1,7 @@
 #import <Cocoa/Cocoa.h>
 #import "CControl.h"
 
-@interface InterSystems_menubarAppDelegate : NSObject <NSApplicationDelegate> {
+@interface cubeAppDelegate : NSObject <NSApplicationDelegate> {
     IBOutlet NSMenu *instancesMenu;
     
     NSMutableArray *instancesList;

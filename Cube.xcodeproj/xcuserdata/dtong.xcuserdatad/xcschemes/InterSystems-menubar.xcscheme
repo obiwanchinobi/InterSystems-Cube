@@ -14,9 +14,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "BFF889411505E53C007B4A9B"
-               BuildableName = "InterSystems-menubar.app"
-               BlueprintName = "InterSystems-menubar"
-               ReferencedContainer = "container:InterSystems-menubar.xcodeproj">
+               BuildableName = "Cube.app"
+               BlueprintName = "Cube"
+               ReferencedContainer = "container:Cube.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -41,9 +41,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "BFF889411505E53C007B4A9B"
-            BuildableName = "InterSystems-menubar.app"
-            BlueprintName = "InterSystems-menubar"
-            ReferencedContainer = "container:InterSystems-menubar.xcodeproj">
+            BuildableName = "Cube.app"
+            BlueprintName = "Cube"
+            ReferencedContainer = "container:Cube.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -60,9 +60,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "BFF889411505E53C007B4A9B"
-            BuildableName = "InterSystems-menubar.app"
-            BlueprintName = "InterSystems-menubar"
-            ReferencedContainer = "container:InterSystems-menubar.xcodeproj">
+            BuildableName = "Cube.app"
+            BlueprintName = "Cube"
+            ReferencedContainer = "container:Cube.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

@@ -7,38 +7,38 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BF1FE3D5151AC28500873642 /* cube.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BF1FE3CE151AC28500873642 /* cube.xcdatamodeld */; };
+		BF1FE3D6151AC28500873642 /* cubeAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BF1FE3D1151AC28500873642 /* cubeAppDelegate.m */; };
+		BF1FE3D8151AC28500873642 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BF1FE3D3151AC28500873642 /* main.m */; };
+		BF1FE3E0151AC2B400873642 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = BF1FE3DA151AC2B400873642 /* Credits.rtf */; };
+		BF1FE3E1151AC2B400873642 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BF1FE3DC151AC2B400873642 /* InfoPlist.strings */; };
+		BF1FE3E2151AC2B400873642 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF1FE3DE151AC2B400873642 /* MainMenu.xib */; };
 		BF3C5994150619EA003DC7F4 /* InterSystemsInstance.m in Sources */ = {isa = PBXBuildFile; fileRef = BF3C5993150619EA003DC7F4 /* InterSystemsInstance.m */; };
 		BF3C599715061AB2003DC7F4 /* CControl.m in Sources */ = {isa = PBXBuildFile; fileRef = BF3C599615061AB2003DC7F4 /* CControl.m */; };
 		BFF80ED71518C06200B56E89 /* cube.png in Resources */ = {isa = PBXBuildFile; fileRef = BFF80ED51518C06200B56E89 /* cube.png */; };
 		BFF889471505E53C007B4A9B /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFF889461505E53C007B4A9B /* Cocoa.framework */; };
-		BFF889511505E53C007B4A9B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BFF8894F1505E53C007B4A9B /* InfoPlist.strings */; };
-		BFF889541505E53C007B4A9B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BFF889531505E53C007B4A9B /* main.m */; };
-		BFF889571505E53C007B4A9B /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = BFF889551505E53C007B4A9B /* Credits.rtf */; };
-		BFF8895A1505E53C007B4A9B /* InterSystems_menubarAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BFF889591505E53C007B4A9B /* InterSystems_menubarAppDelegate.m */; };
-		BFF8895D1505E53C007B4A9B /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = BFF8895B1505E53C007B4A9B /* MainMenu.xib */; };
-		BFF889601505E53C007B4A9B /* InterSystems_menubar.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BFF8895E1505E53C007B4A9B /* InterSystems_menubar.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BF1FE3CC151AC28500873642 /* Cube-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Cube-Info.plist"; path = "cube/Cube-Info.plist"; sourceTree = "<group>"; };
+		BF1FE3CD151AC28500873642 /* Cube-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Cube-Prefix.pch"; path = "cube/Cube-Prefix.pch"; sourceTree = "<group>"; };
+		BF1FE3CF151AC28500873642 /* InterSystems_menubar.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = InterSystems_menubar.xcdatamodel; sourceTree = "<group>"; };
+		BF1FE3D0151AC28500873642 /* cubeAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = cubeAppDelegate.h; path = cube/cubeAppDelegate.h; sourceTree = "<group>"; };
+		BF1FE3D1151AC28500873642 /* cubeAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = cubeAppDelegate.m; path = cube/cubeAppDelegate.m; sourceTree = "<group>"; };
+		BF1FE3D3151AC28500873642 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = cube/main.m; sourceTree = "<group>"; };
+		BF1FE3DB151AC2B400873642 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = cube/en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		BF1FE3DD151AC2B400873642 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = cube/en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		BF1FE3DF151AC2B400873642 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = cube/en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		BF3C5992150619EA003DC7F4 /* InterSystemsInstance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InterSystemsInstance.h; sourceTree = "<group>"; };
 		BF3C5993150619EA003DC7F4 /* InterSystemsInstance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InterSystemsInstance.m; sourceTree = "<group>"; };
 		BF3C599515061AB2003DC7F4 /* CControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CControl.h; sourceTree = "<group>"; };
 		BF3C599615061AB2003DC7F4 /* CControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CControl.m; sourceTree = "<group>"; };
 		BFF80ED51518C06200B56E89 /* cube.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cube.png; sourceTree = "<group>"; };
-		BFF889421505E53C007B4A9B /* InterSystems-menubar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "InterSystems-menubar.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BFF889421505E53C007B4A9B /* Cube.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cube.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFF889461505E53C007B4A9B /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		BFF889491505E53C007B4A9B /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		BFF8894A1505E53C007B4A9B /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		BFF8894B1505E53C007B4A9B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		BFF8894E1505E53C007B4A9B /* InterSystems-menubar-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "InterSystems-menubar-Info.plist"; sourceTree = "<group>"; };
-		BFF889501505E53C007B4A9B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		BFF889521505E53C007B4A9B /* InterSystems-menubar-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "InterSystems-menubar-Prefix.pch"; sourceTree = "<group>"; };
-		BFF889531505E53C007B4A9B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		BFF889561505E53C007B4A9B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
-		BFF889581505E53C007B4A9B /* InterSystems_menubarAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InterSystems_menubarAppDelegate.h; sourceTree = "<group>"; };
-		BFF889591505E53C007B4A9B /* InterSystems_menubarAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InterSystems_menubarAppDelegate.m; sourceTree = "<group>"; };
-		BFF8895C1505E53C007B4A9B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		BFF8895F1505E53C007B4A9B /* InterSystems_menubar.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = InterSystems_menubar.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,11 +53,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BF1FE3CB151AC26F00873642 /* cube */ = {
+			isa = PBXGroup;
+			children = (
+				BF1FE3CE151AC28500873642 /* cube.xcdatamodeld */,
+				BF1FE3D0151AC28500873642 /* cubeAppDelegate.h */,
+				BF1FE3D1151AC28500873642 /* cubeAppDelegate.m */,
+				BF1FE3DE151AC2B400873642 /* MainMenu.xib */,
+				BF1FE3D9151AC28900873642 /* Supporting Files */,
+			);
+			name = cube;
+			sourceTree = "<group>";
+		};
+		BF1FE3D9151AC28900873642 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				BF1FE3DA151AC2B400873642 /* Credits.rtf */,
+				BF1FE3DC151AC2B400873642 /* InfoPlist.strings */,
+				BF1FE3CC151AC28500873642 /* Cube-Info.plist */,
+				BF1FE3CD151AC28500873642 /* Cube-Prefix.pch */,
+				BF1FE3D3151AC28500873642 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		BFF889371505E53C007B4A9B = {
 			isa = PBXGroup;
 			children = (
+				BF1FE3CB151AC26F00873642 /* cube */,
 				BFF889671505E763007B4A9B /* Classes */,
-				BFF8894C1505E53C007B4A9B /* InterSystems-menubar */,
 				BFF889661505E753007B4A9B /* Resources */,
 				BFF889451505E53C007B4A9B /* Frameworks */,
 				BFF889431505E53C007B4A9B /* Products */,
@@ -67,7 +91,7 @@
 		BFF889431505E53C007B4A9B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				BFF889421505E53C007B4A9B /* InterSystems-menubar.app */,
+				BFF889421505E53C007B4A9B /* Cube.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -89,30 +113,6 @@
 				BFF8894B1505E53C007B4A9B /* Foundation.framework */,
 			);
 			name = "Other Frameworks";
-			sourceTree = "<group>";
-		};
-		BFF8894C1505E53C007B4A9B /* InterSystems-menubar */ = {
-			isa = PBXGroup;
-			children = (
-				BFF889581505E53C007B4A9B /* InterSystems_menubarAppDelegate.h */,
-				BFF889591505E53C007B4A9B /* InterSystems_menubarAppDelegate.m */,
-				BFF8895B1505E53C007B4A9B /* MainMenu.xib */,
-				BFF8895E1505E53C007B4A9B /* InterSystems_menubar.xcdatamodeld */,
-				BFF8894D1505E53C007B4A9B /* Supporting Files */,
-			);
-			path = "InterSystems-menubar";
-			sourceTree = "<group>";
-		};
-		BFF8894D1505E53C007B4A9B /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				BFF8894E1505E53C007B4A9B /* InterSystems-menubar-Info.plist */,
-				BFF8894F1505E53C007B4A9B /* InfoPlist.strings */,
-				BFF889521505E53C007B4A9B /* InterSystems-menubar-Prefix.pch */,
-				BFF889531505E53C007B4A9B /* main.m */,
-				BFF889551505E53C007B4A9B /* Credits.rtf */,
-			);
-			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		BFF889661505E753007B4A9B /* Resources */ = {
@@ -137,9 +137,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		BFF889411505E53C007B4A9B /* InterSystems-menubar */ = {
+		BFF889411505E53C007B4A9B /* Cube */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BFF889631505E53C007B4A9B /* Build configuration list for PBXNativeTarget "InterSystems-menubar" */;
+			buildConfigurationList = BFF889631505E53C007B4A9B /* Build configuration list for PBXNativeTarget "Cube" */;
 			buildPhases = (
 				BFF8893E1505E53C007B4A9B /* Sources */,
 				BFF8893F1505E53C007B4A9B /* Frameworks */,
@@ -149,9 +149,9 @@
 			);
 			dependencies = (
 			);
-			name = "InterSystems-menubar";
+			name = Cube;
 			productName = "InterSystems-menubar";
-			productReference = BFF889421505E53C007B4A9B /* InterSystems-menubar.app */;
+			productReference = BFF889421505E53C007B4A9B /* Cube.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -162,7 +162,7 @@
 			attributes = {
 				ORGANIZATIONNAME = "David Tong";
 			};
-			buildConfigurationList = BFF8893C1505E53C007B4A9B /* Build configuration list for PBXProject "InterSystems-menubar" */;
+			buildConfigurationList = BFF8893C1505E53C007B4A9B /* Build configuration list for PBXProject "Cube" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -174,7 +174,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				BFF889411505E53C007B4A9B /* InterSystems-menubar */,
+				BFF889411505E53C007B4A9B /* Cube */,
 			);
 		};
 /* End PBXProject section */
@@ -184,10 +184,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BFF889511505E53C007B4A9B /* InfoPlist.strings in Resources */,
-				BFF889571505E53C007B4A9B /* Credits.rtf in Resources */,
-				BFF8895D1505E53C007B4A9B /* MainMenu.xib in Resources */,
 				BFF80ED71518C06200B56E89 /* cube.png in Resources */,
+				BF1FE3E0151AC2B400873642 /* Credits.rtf in Resources */,
+				BF1FE3E1151AC2B400873642 /* InfoPlist.strings in Resources */,
+				BF1FE3E2151AC2B400873642 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -198,37 +198,37 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BFF889541505E53C007B4A9B /* main.m in Sources */,
-				BFF8895A1505E53C007B4A9B /* InterSystems_menubarAppDelegate.m in Sources */,
-				BFF889601505E53C007B4A9B /* InterSystems_menubar.xcdatamodeld in Sources */,
 				BF3C5994150619EA003DC7F4 /* InterSystemsInstance.m in Sources */,
 				BF3C599715061AB2003DC7F4 /* CControl.m in Sources */,
+				BF1FE3D5151AC28500873642 /* cube.xcdatamodeld in Sources */,
+				BF1FE3D6151AC28500873642 /* cubeAppDelegate.m in Sources */,
+				BF1FE3D8151AC28500873642 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		BFF8894F1505E53C007B4A9B /* InfoPlist.strings */ = {
+		BF1FE3DA151AC2B400873642 /* Credits.rtf */ = {
 			isa = PBXVariantGroup;
 			children = (
-				BFF889501505E53C007B4A9B /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		BFF889551505E53C007B4A9B /* Credits.rtf */ = {
-			isa = PBXVariantGroup;
-			children = (
-				BFF889561505E53C007B4A9B /* en */,
+				BF1FE3DB151AC2B400873642 /* en */,
 			);
 			name = Credits.rtf;
 			sourceTree = "<group>";
 		};
-		BFF8895B1505E53C007B4A9B /* MainMenu.xib */ = {
+		BF1FE3DC151AC2B400873642 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				BFF8895C1505E53C007B4A9B /* en */,
+				BF1FE3DD151AC2B400873642 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		BF1FE3DE151AC2B400873642 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BF1FE3DF151AC2B400873642 /* en */,
 			);
 			name = MainMenu.xib;
 			sourceTree = "<group>";
@@ -276,9 +276,9 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "InterSystems-menubar/InterSystems-menubar-Prefix.pch";
-				INFOPLIST_FILE = "InterSystems-menubar/InterSystems-menubar-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "cube/Cube-Prefix.pch";
+				INFOPLIST_FILE = "cube/Cube-Info.plist";
+				PRODUCT_NAME = Cube;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -291,9 +291,9 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "InterSystems-menubar/InterSystems-menubar-Prefix.pch";
-				INFOPLIST_FILE = "InterSystems-menubar/InterSystems-menubar-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "cube/Cube-Prefix.pch";
+				INFOPLIST_FILE = "cube/Cube-Info.plist";
+				PRODUCT_NAME = Cube;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -301,7 +301,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		BFF8893C1505E53C007B4A9B /* Build configuration list for PBXProject "InterSystems-menubar" */ = {
+		BFF8893C1505E53C007B4A9B /* Build configuration list for PBXProject "Cube" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BFF889611505E53C007B4A9B /* Debug */,
@@ -310,7 +310,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BFF889631505E53C007B4A9B /* Build configuration list for PBXNativeTarget "InterSystems-menubar" */ = {
+		BFF889631505E53C007B4A9B /* Build configuration list for PBXNativeTarget "Cube" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BFF889641505E53C007B4A9B /* Debug */,
@@ -322,13 +322,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		BFF8895E1505E53C007B4A9B /* InterSystems_menubar.xcdatamodeld */ = {
+		BF1FE3CE151AC28500873642 /* cube.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				BFF8895F1505E53C007B4A9B /* InterSystems_menubar.xcdatamodel */,
+				BF1FE3CF151AC28500873642 /* InterSystems_menubar.xcdatamodel */,
 			);
-			currentVersion = BFF8895F1505E53C007B4A9B /* InterSystems_menubar.xcdatamodel */;
-			path = InterSystems_menubar.xcdatamodeld;
+			currentVersion = BF1FE3CF151AC28500873642 /* InterSystems_menubar.xcdatamodel */;
+			name = cube.xcdatamodeld;
+			path = cube/cube.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
