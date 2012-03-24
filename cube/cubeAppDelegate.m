@@ -274,7 +274,6 @@
             [docsMenuItem setAction:@selector(launchDocs:)];
             [referencesMenuItem setAction:@selector(launchReferences:)];
             [[sender parentItem] setState:NSOnState];
-//            [[sender parentItem] setImage:[NSImage imageNamed:NSImageNameStatusAvailable]];
         }
         else if ([instance.status isEqualToString:Stopped]) {
             [sender setTitle:@"Start Instance"];
@@ -284,17 +283,14 @@
             [docsMenuItem setAction:nil];
             [referencesMenuItem setAction:nil];
             [[sender parentItem] setState:NSOffState];
-//            [[sender parentItem] setImage:[NSImage imageNamed:NSImageNameStatusUnavailable]];
         }
         else {
             [[sender parentItem] setState:NSMixedState];
-//            [[sender parentItem] setImage:[NSImage imageNamed:NSImageNameStatusPartiallyAvailable]];
-            
-            NSLog(@"Instance is niether running or down");
+            NSLog(@"'%@' is niether running or down", instance.name);
         }
     }
     else {
-        NSLog(@"Error starting/stopping!");
+        NSLog(@"Error starting/stopping '%@'", instance.name);
     }
 }
 
@@ -342,7 +338,6 @@
     }
     
     // Connect to Helper
-    NSLog(@"Connecting to Helper");
     NSConnection *c = [NSConnection connectionWithRegisteredName:@"com.InterSystems.CubeHelper.mach" host:nil]; 
     PrivilegedActions *proxy = (PrivilegedActions *)[c rootProxy];
     
@@ -526,17 +521,6 @@
         }
         [restartMenuItem setRepresentedObject:instance];
         
-        // setup objects for start/stop submenu
-        [startStopMenuItem setRepresentedObject:
-            [NSDictionary dictionaryWithObjectsAndKeys:
-                instance, @"instance",
-                telnetMenuItem, @"telnet",
-                restartMenuItem, @"restart",
-                portalMenuItem, @"portal", 
-                docsMenuItem, @"docs", 
-                referencesMenuItem, @"references", 
-             nil]];
-        
         // autostart submenu
         toggleInstanceAutoStartMenuItem = [subMenu addItemWithTitle:@"Autostart on System Startup" action:@selector(toggleInstanceAutoStart:) keyEquivalent:@""];
         [toggleInstanceAutoStartMenuItem setRepresentedObject:instance];
@@ -567,6 +551,18 @@
             referencesMenuItem = [subMenu addItemWithTitle:@"Class Reference" action:nil keyEquivalent:@""];
         }
         [referencesMenuItem setRepresentedObject:instance];
+        
+        // setup objects for start/stop submenu - done after other menus are assigned
+        [startStopMenuItem setRepresentedObject:
+         [NSDictionary dictionaryWithObjectsAndKeys:
+          instance, @"instance",
+          telnetMenuItem, @"telnet",
+          restartMenuItem, @"restart",
+          portalMenuItem, @"portal", 
+          docsMenuItem, @"docs", 
+          referencesMenuItem, @"references", 
+          nil]
+         ];
         
         [instance release];
         [subMenu release];
