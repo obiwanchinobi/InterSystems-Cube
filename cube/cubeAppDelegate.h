@@ -9,6 +9,7 @@
     
     NSMutableArray *instancesList;
     NSStatusItem * instancesItem;
+    PrivilegedActions *proxy;
     
 @private
     NSWindow *window;

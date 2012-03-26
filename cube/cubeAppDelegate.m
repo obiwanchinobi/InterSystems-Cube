@@ -13,11 +13,44 @@
     //This image should uses only black and clear colors.
     //Click over a template image in statusBar converts black color in white and alpha channel in blue.
     [instancesImage setTemplate:YES];
-    
-    //    [instancesItem setMenu:instancesMenu];
     [instancesItem setImage:instancesImage];
     [instancesItem setToolTip:@"Manage InterSystems Instances"];
     [instancesItem setHighlightMode:YES];
+    BOOL blessHelper = TRUE;
+    NSArray *allJobs = (NSArray *)SMCopyAllJobDictionaries(kSMDomainSystemLaunchd);
+    for (NSDictionary *job in allJobs) {
+        NSString *label = [job objectForKey: @"Label"];
+        NSString *program = [job objectForKey: @"Program"];
+        if (nil == program) {
+            program = [[job objectForKey: @"ProgramArguments"] objectAtIndex: 0];
+        }
+        if ([label isEqualToString:@"com.InterSystems.CubeHelper"]) {
+            blessHelper = FALSE;
+            NSLog(@"Detected helper job: %@ (%@)", label, program);
+        }
+    }
+    [allJobs release];
+    
+    if (blessHelper == TRUE) {
+        // Get authorization
+        AuthorizationRef authRef = [self createAuthRef];
+        if (authRef == NULL) {
+            NSLog(@"Authorization failed");
+            return;
+        }
+        
+        // Bless Helper
+        NSError *error = nil;
+        if (![self blessHelperWithLabel:@"com.InterSystems.CubeHelper" withAuthRef:authRef error:&error]) {
+            NSLog(@"Bless Error: %@",error);
+            return;
+        }
+        NSLog(@"Helper job does not exist - bless helper!");
+    }
+
+    // Connect to Helper
+    NSConnection *c = [NSConnection connectionWithRegisteredName:@"com.InterSystems.CubeHelper.mach" host:nil]; 
+    proxy = (PrivilegedActions *)[c rootProxy];
     
     if ([CControl isInterSystemsInstalled] == TRUE) {
         instancesList = [[NSMutableArray alloc] init];
@@ -116,24 +149,6 @@
 - (IBAction)startStopInstance:sender {
     InterSystemsInstance *instance = [sender representedObject];
     
-    // Get authorization
-    AuthorizationRef authRef = [self createAuthRef];
-    if (authRef == NULL) {
-        NSLog(@"Authorization failed");
-        return;
-    }
-    
-    // Bless Helper
-    NSError *error = nil;
-    if (![self blessHelperWithLabel:@"com.InterSystems.CubeHelper" withAuthRef:authRef error:&error]) {
-        NSLog(@"Bless Error: %@",error);
-        return;
-    }
-    
-    // Connect to Helper
-    NSConnection *c = [NSConnection connectionWithRegisteredName:@"com.InterSystems.CubeHelper.mach" host:nil]; 
-    PrivilegedActions *proxy = (PrivilegedActions *)[c rootProxy];
-    
     if ([proxy startStopInstance:instance] == FALSE) {
         NSLog(@"Error starting/stopping '%@'", instance.name);
     }
@@ -141,24 +156,6 @@
 
 - (IBAction)restartInstance:sender {
     InterSystemsInstance *instance = [sender representedObject];
-    
-    // Get authorization
-    AuthorizationRef authRef = [self createAuthRef];
-    if (authRef == NULL) {
-        NSLog(@"Authorization failed");
-        return;
-    }
-    
-    // Bless Helper
-    NSError *error = nil;
-    if (![self blessHelperWithLabel:@"com.InterSystems.CubeHelper" withAuthRef:authRef error:&error]) {
-        NSLog(@"Bless Error: %@",error);
-        return;
-    }
-    
-    // Connect to Helper
-    NSConnection *c = [NSConnection connectionWithRegisteredName:@"com.InterSystems.CubeHelper.mach" host:nil]; 
-    PrivilegedActions *proxy = (PrivilegedActions *)[c rootProxy];
 
     [proxy restartInstance:instance];
 }
@@ -186,24 +183,6 @@
 
 - (IBAction)toggleInstanceAutoStart:sender {
     InterSystemsInstance *instance = [sender representedObject];
-    
-    // Get authorization
-    AuthorizationRef authRef = [self createAuthRef];
-    if (authRef == NULL) {
-        NSLog(@"Authorization failed");
-        return;
-    }
-    
-    // Bless Helper
-    NSError *error = nil;
-    if (![self blessHelperWithLabel:@"com.InterSystems.CubeHelper" withAuthRef:authRef error:&error]) {
-        NSLog(@"Bless Error: %@",error);
-        return;
-    }
-    
-    // Connect to Helper
-    NSConnection *c = [NSConnection connectionWithRegisteredName:@"com.InterSystems.CubeHelper.mach" host:nil]; 
-    PrivilegedActions *proxy = (PrivilegedActions *)[c rootProxy];
     
     if ([InterSystemsInstance isStartupScriptInstalled:instance.name] == FALSE) {
         [proxy createAutoStartFiles:instance];
