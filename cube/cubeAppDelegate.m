@@ -6,7 +6,41 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-    [self validateInstallationFiles];
+    NSImage *instancesImage = [NSImage imageNamed:@"cube.png"];
+    instancesItem = [[[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength] retain];
+    
+    //Use SetTemplate to set image as template.
+    //This image should uses only black and clear colors.
+    //Click over a template image in statusBar converts black color in white and alpha channel in blue.
+    [instancesImage setTemplate:YES];
+    
+    //    [instancesItem setMenu:instancesMenu];
+    [instancesItem setImage:instancesImage];
+    [instancesItem setToolTip:@"Manage InterSystems Instances"];
+    [instancesItem setHighlightMode:YES];
+    
+    if ([CControl isInterSystemsInstalled] == TRUE) {
+        instancesList = [[NSMutableArray alloc] init];
+        instancesList = [CControl getInstances];
+        
+        // Load Instances
+        if ([instancesList count] > 0) {
+            [instancesItem setAction:@selector(validateInstallationFiles)];
+            [instancesItem setTarget:self];
+        }
+        else {
+            [instancesItem setMenu:instancesMenu];
+            [instancesMenu insertItemWithTitle:@"No instances installed" action:nil keyEquivalent:@"" atIndex:0];
+            [instancesMenu insertItem:[NSMenuItem separatorItem] atIndex:1];
+            [instancesMenu insertItemWithTitle:@"Quit" action:@selector(quit:) keyEquivalent:@"" atIndex:2];
+        }
+    }
+    else {
+        [instancesItem setMenu:instancesMenu];
+        [instancesMenu insertItemWithTitle:@"No InterSystems installations detected" action:nil keyEquivalent:@"" atIndex:0];
+        [instancesMenu insertItem:[NSMenuItem separatorItem] atIndex:1];
+        [instancesMenu insertItemWithTitle:@"Quit" action:@selector(quit:) keyEquivalent:@"" atIndex:2];
+    }
 }
 
 - (void)validateInstallationFiles {
@@ -19,12 +53,14 @@
             [self createMenus];
         }
         else {
+            [instancesItem setMenu:instancesMenu];
             [instancesMenu insertItemWithTitle:@"No instances installed" action:nil keyEquivalent:@"" atIndex:0];
             [instancesMenu insertItem:[NSMenuItem separatorItem] atIndex:1];
             [instancesMenu insertItemWithTitle:@"Quit" action:@selector(quit:) keyEquivalent:@"" atIndex:2];
         }
     }
     else {
+        [instancesItem setMenu:instancesMenu];
         [instancesMenu insertItemWithTitle:@"No InterSystems installations detected" action:nil keyEquivalent:@"" atIndex:0];
         [instancesMenu insertItem:[NSMenuItem separatorItem] atIndex:1];
         [instancesMenu insertItemWithTitle:@"Quit" action:@selector(quit:) keyEquivalent:@"" atIndex:2];
@@ -204,18 +240,7 @@
 }
 
 -(void)awakeFromNib {
-    NSImage *instancesImage = [NSImage imageNamed:@"cube.png"];
-    instancesItem = [[[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength] retain];
-    
-    //Use SetTemplate to set image as template.
-    //This image should uses only black and clear colors.
-    //Click over a template image in statusBar converts black color in white and alpha channel in blue.
-    [instancesImage setTemplate:YES];
-    
-    [instancesItem setMenu:instancesMenu];
-    [instancesItem setImage:instancesImage];
-    [instancesItem setToolTip:@"Manage InterSystems Instances"];
-    [instancesItem setHighlightMode:YES];
+
 }
 
 -(IBAction)quit:sender {
@@ -440,7 +465,6 @@
     NSMenuItem *startStopMenuItem;
     NSMenuItem *restartMenuItem;
     NSMenuItem *toggleInstanceAutoStartMenuItem;
-    NSMenuItem *refreshMenuItem;
     NSMenuItem *toggleAutoStartAtLoginMenuItem;
     NSMenu *subMenu;
     NSString *status;
@@ -572,9 +596,6 @@
         [instancesMenu insertItem:[NSMenuItem separatorItem] atIndex:index++];
     }
     
-    refreshMenuItem = [instancesMenu insertItemWithTitle:@"Refresh" action:@selector(validateInstallationFiles) keyEquivalent:@"" atIndex:index++];
-    [instancesMenu insertItem:[NSMenuItem separatorItem] atIndex:index++];
-    
     toggleAutoStartAtLoginMenuItem = [instancesMenu insertItemWithTitle:@"Start at Login" action:@selector(toggleAutoStartAtLogin:) keyEquivalent:@"" atIndex:index++];
     LSSharedFileListRef loginItems = LSSharedFileListCreate(NULL, kLSSharedFileListSessionLoginItems, NULL);
 	if ([self loginItemExistsWithLoginItemReference:loginItems ForPath:appPath]) {
@@ -585,6 +606,9 @@
     [instancesMenu insertItem:[NSMenuItem separatorItem] atIndex:index++];
     
     [instancesMenu insertItemWithTitle:@"Quit" action:@selector(quit:) keyEquivalent:@"" atIndex:index++];
+    
+    // Display menu after constructing instancesMenu
+    [instancesItem popUpStatusItemMenu:instancesMenu];
 }
 
 - (AuthorizationRef)createAuthRef
