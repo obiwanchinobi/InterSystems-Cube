@@ -28,15 +28,15 @@ NSString * const Stopped = @"down";
     
     if (toggle == TRUE) {
         [fileManager removeItemAtPath:disableFile error:&error];
-        syslog(LOG_NOTICE, "CubeHelper toggleInstanceAutoStart: Successfuly enabled startup script for '%s'", [instance.name UTF8String]);
+        syslog(LOG_NOTICE, "Enabled StartupItem '%s'", [instance.name UTF8String]);
     }
     else {
         [fileManager createFileAtPath:disableFile contents:nil attributes:attr];
         if (error == nil) {
-            syslog(LOG_NOTICE, "CubeHelper toggleInstanceAutoStart: Successfuly disabled startup script for '%s'", [instance.name UTF8String]);
+            syslog(LOG_NOTICE, "Disabled StartupItem '%s'", [instance.name UTF8String]);
         }
         else {
-            syslog(LOG_ERR, "CubeHelper toggleInstanceAutoStart ('%s'): %s", [instance.name UTF8String], [[error localizedDescription] UTF8String]);
+            syslog(LOG_ERR, "Error toggling StartupItem '%s': %s", [instance.name UTF8String], [[error localizedDescription] UTF8String]);
         }
     }
 }
@@ -162,10 +162,10 @@ NSString * const Stopped = @"down";
     [fileManager createDirectoryAtPath:dir withIntermediateDirectories:TRUE attributes:attr error:&error];
     
     if (error == nil) {
-        syslog(LOG_NOTICE, "CubeHelper createAutoStartFiles: Successfuly created startup script for '%s'", [instance.name UTF8String]);
+        syslog(LOG_NOTICE, "Created StartupItem for '%s'", [instance.name UTF8String]);
     }
     else {
-        syslog(LOG_ERR, "CubeHelper createAutoStartFiles ('%s'): %s", [instance.name UTF8String], [[error localizedDescription] UTF8String]);
+        syslog(LOG_ERR, "Error creating StartupItem '%s': %s", [instance.name UTF8String], [[error localizedDescription] UTF8String]);
     }
     
     
@@ -206,16 +206,16 @@ NSString * const Stopped = @"down";
     if (status == 0) {
         if ([instance.status isEqualToString:Started]) {
             instance.status = Stopped;
-            NSLog(@"Successfully stopped %@", instance.name);
+            syslog(LOG_NOTICE, "Stopped '%s'", [instance.name UTF8String]);
         }
         else if ([instance.status isEqualToString:Stopped]) {
             instance.status = Started;
-            NSLog(@"Successfully started %@", instance.name);
+            syslog(LOG_NOTICE, "Started '%s'", [instance.name UTF8String]);
         }
         return TRUE;
     }
     else {
-        NSLog(@"Attempted to %@ %@ but failed!", action, instance.name);
+        syslog(LOG_NOTICE, "Attempted to %s %s but failed!", [action UTF8String], [instance.name UTF8String]);
         return FALSE;
     }
 }
@@ -235,10 +235,10 @@ NSString * const Stopped = @"down";
     int status = [task terminationStatus];
     
     if (status == 0) {
-        NSLog(@"%@ restarted!", instance.name);
+        syslog(LOG_NOTICE, "Restarted '%s'", [instance.name UTF8String]);
     }
     else {
-        NSLog(@"Error restarting %@!", instance.name);
+        syslog(LOG_NOTICE, "Error restarting %s!", [instance.name UTF8String]);
     }
 }
 
