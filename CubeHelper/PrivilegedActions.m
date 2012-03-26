@@ -11,6 +11,9 @@
 
 @implementation PrivilegedActions
 
+NSString * const Started = @"running";
+NSString * const Stopped = @"down";
+
 - (void)toggleInstanceAutoStart:(InterSystemsInstance *)instance:(BOOL)toggle {
     NSError *error = nil;
     
@@ -172,5 +175,72 @@
     [fileManager createFileAtPath:plistFile contents:plistContents attributes:attr];
     
 }
+
+- (BOOL)startStopInstance:(InterSystemsInstance *)instance {
+    NSString *action;
+    NSString *parameter = nil;
+    
+    if ([instance.status isEqualToString:Started]) {
+        action = @"stop";
+        parameter = @"quietly";
+    }
+    else if ([instance.status isEqualToString:Stopped]) {
+        action = @"start";
+    }
+    else {
+        action = @"force";
+    }
+    
+    //Setup the task execution
+    NSPipe *output = [NSPipe pipe];
+    NSTask *task = [[[NSTask alloc] init] autorelease];
+    [task setLaunchPath:@"/usr/bin/ccontrol"];
+    [task setArguments:[NSArray arrayWithObjects:action, instance.name, parameter, nil]];
+    [task setStandardOutput:output];
+    
+    //launch task and wait for completion
+    [task launch];
+    [task waitUntilExit];
+    int status = [task terminationStatus];
+    
+    if (status == 0) {
+        if ([instance.status isEqualToString:Started]) {
+            instance.status = Stopped;
+            NSLog(@"Successfully stopped %@", instance.name);
+        }
+        else if ([instance.status isEqualToString:Stopped]) {
+            instance.status = Started;
+            NSLog(@"Successfully started %@", instance.name);
+        }
+        return TRUE;
+    }
+    else {
+        NSLog(@"Attempted to %@ %@ but failed!", action, instance.name);
+        return FALSE;
+    }
+}
+
+- (void)restartInstance:(InterSystemsInstance *)instance {
+    
+    //Setup the task execution
+    NSPipe *output = [NSPipe pipe];
+    NSTask *task = [[[NSTask alloc] init] autorelease];
+    [task setLaunchPath:@"/usr/bin/ccontrol"];
+    [task setArguments:[NSArray arrayWithObjects:@"stop", instance.name, @"quietly", @"restart", nil]];
+    [task setStandardOutput:output];
+    
+    //launch task and wait for completion
+    [task launch];
+    [task waitUntilExit];
+    int status = [task terminationStatus];
+    
+    if (status == 0) {
+        NSLog(@"%@ restarted!", instance.name);
+    }
+    else {
+        NSLog(@"Error restarting %@!", instance.name);
+    }
+}
+
 
 @end

@@ -18,4 +18,7 @@
 - (void)toggleInstanceAutoStart:(InterSystemsInstance *)instance:(BOOL)toggle;
 - (void)createAutoStartFiles:(InterSystemsInstance *)instance;
 
+- (BOOL)startStopInstance:(InterSystemsInstance *)instance;
+- (void)restartInstance:(InterSystemsInstance *)instance;
+
 @end

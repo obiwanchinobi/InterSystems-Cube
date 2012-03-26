@@ -290,7 +290,25 @@
     NSMenuItem *docsMenuItem = [dict objectForKey:@"docs"];
     NSMenuItem *referencesMenuItem = [dict objectForKey:@"references"];
     
-    if ([CControl startStopInstance:instance] == TRUE) {
+    // Get authorization
+    AuthorizationRef authRef = [self createAuthRef];
+    if (authRef == NULL) {
+        NSLog(@"Authorization failed");
+        return;
+    }
+    
+    // Bless Helper
+    NSError *error = nil;
+    if (![self blessHelperWithLabel:@"com.InterSystems.CubeHelper" withAuthRef:authRef error:&error]) {
+        NSLog(@"Bless Error: %@",error);
+        return;
+    }
+    
+    // Connect to Helper
+    NSConnection *c = [NSConnection connectionWithRegisteredName:@"com.InterSystems.CubeHelper.mach" host:nil]; 
+    PrivilegedActions *proxy = (PrivilegedActions *)[c rootProxy];
+    
+    if ([proxy startStopInstance:instance] == TRUE) {
         if ([instance.status isEqualToString:Started]) {
             [sender setTitle:@"Stop Instance"];
             [telnetMenuItem setAction:@selector(telnet:)];
@@ -321,7 +339,26 @@
 
 - (IBAction)restartInstance:sender {
     InterSystemsInstance *instance = [sender representedObject];
-    [CControl restartInstance:instance];
+    
+    // Get authorization
+    AuthorizationRef authRef = [self createAuthRef];
+    if (authRef == NULL) {
+        NSLog(@"Authorization failed");
+        return;
+    }
+    
+    // Bless Helper
+    NSError *error = nil;
+    if (![self blessHelperWithLabel:@"com.InterSystems.CubeHelper" withAuthRef:authRef error:&error]) {
+        NSLog(@"Bless Error: %@",error);
+        return;
+    }
+    
+    // Connect to Helper
+    NSConnection *c = [NSConnection connectionWithRegisteredName:@"com.InterSystems.CubeHelper.mach" host:nil]; 
+    PrivilegedActions *proxy = (PrivilegedActions *)[c rootProxy];
+
+    [proxy restartInstance:instance];
 }
 
 - (IBAction)launchPortal:sender {
