@@ -8,7 +8,7 @@
   <style type="text/css">
     body {
       margin-top: 1.0em;
-      background-color: #4566e0;
+      background-color: #ffffff;
       font-family: Helvetica, Arial, FreeSans, san-serif;
       color: #000000;
     }
@@ -16,17 +16,18 @@
       margin: 0 auto;
       width: 700px;
     }
-    h1 { font-size: 3.8em; color: #ba991f; margin-bottom: 3px; }
+    h1 { font-size: 3.8em; color: #2b2b2b; margin-bottom: 3px; }
     h1 .small { font-size: 0.4em; }
     h1 a { text-decoration: none }
-    h2 { font-size: 1.5em; color: #ba991f; }
-    h3 { text-align: center; color: #ba991f; }
-    a { color: #ba991f; }
+    h2 { font-size: 1.5em; color: #2b2b2b; }
+    h3 { text-align: center; color: #2b2b2b; }
+    a { color: #00A; }
     .description { font-size: 1.2em; margin-bottom: 30px; margin-top: 30px; font-style: italic;}
     .download { float: right; }
     pre { background: #000; color: #fff; padding: 15px;}
     hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
     .footer { text-align:center; padding-top:30px; font-style: italic; }
+    strong, b { font-weight: bolder;  }
   </style>
 </head>
 
@@ -36,74 +37,81 @@
   <div id="container">
 
     <div class="download">
-      <a href="https://github.com/obiwanchinobi/InterSystems-cube/zipball/master">
-        <img border="0" width="90" src="https://github.com/images/modules/download/zip.png"></a>
-      <a href="https://github.com/obiwanchinobi/InterSystems-cube/tarball/master">
-        <img border="0" width="90" src="https://github.com/images/modules/download/tar.png"></a>
+      <a href="https://github.com/obiwanchinobi/InterSystems-cube/">
+        <img border="0" width="90" src="https://github.com/images/modules/download/zip.png">
+      </a>
     </div>
 
-    <h1><a href="https://github.com/obiwanchinobi/InterSystems-cube">InterSystems-cube</a>
-      <span class="small">by <a href="https://github.com/obiwanchinobi">obiwanchinobi</a></span></h1>
+    <h1>
+      InterSystems-cube
+      <br/>
+      <span class="small">by <a href="https://github.com/obiwanchinobi">Dave Tong (Obiwan Chinobi)</a></span>
+    </h1>
 
     <div class="description">
       A way to manage InterSystems' OSX installations.
     </div>
-
     
-      <p>I install dozens of InterSystems Caché and Ensemble builds per month and I wanted a better way of managing all of my installations, especially which ones should automatically start on system boot.</p>
-    
+      <p>Built with the intent to help better manage all of your InterSystems' Caché and Ensemble Instances.</p>
+      <h2>Features</h2>
+      <ul>
+        <li>Start/Stop/Restart Instances</li>
+        <li>Autostart an Instance on system startup</li>
+        <li>Telnet into Caché/Ensemble</li>
+        <li>Open up Management Portal</li>
+        <li>Open up directory the Instance is installed to</li>
+        <li>Open up Documentation and Class Reference</li>
+      </ul>
 
     
       <h2>Dependencies</h2>
-      <p>If you don't have InterSystems installed locally on OSX then don't waste your time.
-
-This has only been tested on Snow Leopard and Lion.</p>
+      <p>If you don't have InterSystems technology installed locally on OSX then perhaps you should start.</p>
+      <p>This has only been tested on Snow Leopard and Lion.</p>
     
-
+      <h2>Installation Instructions</h2>
+      <ul>
+        <li>Download and unzip App</li>
+        <li>Move App to your Applications directory</li>
+        <li>Run it - this will prompt you for a password the first time you run it because it is installing a Helper Job that requires root privileges. This Helper is used for:
+          <ul>
+            <li>Starting/stopping/restarting an Instance</li>
+            <li>Managing StartupItems - requires root privileges</li>
+          </ul>
+      </ul>
     
-      <h2>Install</h2>
-      <p>Just download and move the app to your Applications directory.
-
-It will prompt you for a password the first time you use it because it is installing a script that is responsible for starting/stopping/restarting and managing StartupItems which all require root privileges.</p>
-    
-
-    
-
-    
-      <h2>Authors</h2>
-      <p>Obiwan Chinobi (david.mh.tong@gmail.com)</p>
-    
-
-    
-      <h2>Contact</h2>
-      <p>Please send all support and feature requests to Dave Tong (David.Tong@InterSystems.com).</p>
-    
+      <h2>TODOs</h2>
+      <ul>
+        <li>If Terminal.app is open but no windows are present, the Terminal Session should open a new window</li>
+        <li><b>Open Installation Directory</b> should set focus to the Finder app</li>
+      </ul>
+        
+      <h2>Author/Contact</h2>
+      <p>Please send all support and feature requests to <a href="mailto:David.Tong@InterSystems.com">Dave Tong</a>.</p>
+      <p>To date, this project has not been endorsed by InterSystems so this has been a side-project. Therefore, any bug fixes and feature enhancements will occur at Dave's earliest convenience.</p>
 
     <h2>Download</h2>
     <p>
-      You can download this project in either
-      <a href="https://github.com/obiwanchinobi/InterSystems-cube/zipball/master">zip</a> or
-      <a href="https://github.com/obiwanchinobi/InterSystems-cube/tarball/master">tar formats.
-    </p>
-    <p>You can also clone the project with <a href="http://git-scm.com">Git</a>
-      by running:
-      <pre>$ git clone git://github.com/obiwanchinobi/InterSystems-cube</pre>
+      You can download the App <a href="https://github.com/obiwanchinobi/">here</a>
     </p>
 
     <div class="footer">
-      get the source code on GitHub : <a href="https://github.com/obiwanchinobi/InterSystems-cube">obiwanchinobi/InterSystems-cube</a>
+      Thanks to the AU macusers for helping out with the Beta testing!
     </div>
 
   </div>
 
 <script type="text/javascript">
-var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-30353278-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
 </script>
-<script type="text/javascript">
-try {
-var pageTracker = _gat._getTracker("UA-0000000-1");
-pageTracker._trackPageview();
-} catch(err) {}</script>"
 </body>
 </html>
