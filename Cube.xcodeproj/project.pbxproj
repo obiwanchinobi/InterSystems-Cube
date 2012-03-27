@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BF0202EE15214CE200A40C74 /* cube_status.icns in Resources */ = {isa = PBXBuildFile; fileRef = BF0202EC15214CE200A40C74 /* cube_status.icns */; };
+		BF0202EF15214CE200A40C74 /* cube.icns in Resources */ = {isa = PBXBuildFile; fileRef = BF0202ED15214CE200A40C74 /* cube.icns */; };
 		BF1FE3D5151AC28500873642 /* cube.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BF1FE3CE151AC28500873642 /* cube.xcdatamodeld */; };
 		BF1FE3D6151AC28500873642 /* cubeAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BF1FE3D1151AC28500873642 /* cubeAppDelegate.m */; };
 		BF1FE3D8151AC28500873642 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BF1FE3D3151AC28500873642 /* main.m */; };
@@ -22,7 +24,6 @@
 		BF4C5139151B48DD00E3459B /* PrivilegedActions.m in Sources */ = {isa = PBXBuildFile; fileRef = BF4C5138151B48DD00E3459B /* PrivilegedActions.m */; };
 		BF4C5145151B4C5300E3459B /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF4C5144151B4C5300E3459B /* Security.framework */; };
 		BF4C5147151B4C5D00E3459B /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF4C5146151B4C5D00E3459B /* ServiceManagement.framework */; };
-		BFF80ED71518C06200B56E89 /* cube.png in Resources */ = {isa = PBXBuildFile; fileRef = BFF80ED51518C06200B56E89 /* cube.png */; };
 		BFF889471505E53C007B4A9B /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFF889461505E53C007B4A9B /* Cocoa.framework */; };
 /* End PBXBuildFile section */
 
@@ -60,6 +61,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		BF0202EC15214CE200A40C74 /* cube_status.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = cube_status.icns; sourceTree = "<group>"; };
+		BF0202ED15214CE200A40C74 /* cube.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = cube.icns; sourceTree = "<group>"; };
 		BF1FE3CC151AC28500873642 /* Cube-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Cube-Info.plist"; path = "cube/Cube-Info.plist"; sourceTree = "<group>"; };
 		BF1FE3CD151AC28500873642 /* Cube-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Cube-Prefix.pch"; path = "cube/Cube-Prefix.pch"; sourceTree = "<group>"; };
 		BF1FE3CF151AC28500873642 /* InterSystems_menubar.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = InterSystems_menubar.xcdatamodel; sourceTree = "<group>"; };
@@ -84,7 +87,6 @@
 		BF4C5138151B48DD00E3459B /* PrivilegedActions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrivilegedActions.m; sourceTree = "<group>"; };
 		BF4C5144151B4C5300E3459B /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		BF4C5146151B4C5D00E3459B /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
-		BFF80ED51518C06200B56E89 /* cube.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cube.png; sourceTree = "<group>"; };
 		BFF889421505E53C007B4A9B /* Cube.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cube.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFF889461505E53C007B4A9B /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		BFF889491505E53C007B4A9B /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -206,7 +208,8 @@
 		BFF889661505E753007B4A9B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				BFF80ED51518C06200B56E89 /* cube.png */,
+				BF0202EC15214CE200A40C74 /* cube_status.icns */,
+				BF0202ED15214CE200A40C74 /* cube.icns */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -292,10 +295,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BFF80ED71518C06200B56E89 /* cube.png in Resources */,
 				BF1FE3E0151AC2B400873642 /* Credits.rtf in Resources */,
 				BF1FE3E1151AC2B400873642 /* InfoPlist.strings in Resources */,
 				BF1FE3E2151AC2B400873642 /* MainMenu.xib in Resources */,
+				BF0202EE15214CE200A40C74 /* cube_status.icns in Resources */,
+				BF0202EF15214CE200A40C74 /* cube.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -6,7 +6,7 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-    NSImage *instancesImage = [NSImage imageNamed:@"cube.png"];
+    NSImage *instancesImage = [NSImage imageNamed:@"cube_status.icns"];
     instancesItem = [[[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength] retain];
     
     //Use SetTemplate to set image as template.
