@@ -18,7 +18,7 @@
 @property (assign) IBOutlet NSWindow *window;
 
 - (IBAction)quit:sender;
-- (IBAction)telnet:sender;
+- (IBAction)terminal:sender;
 - (IBAction)openDirectory:sender;
 - (IBAction)startStopInstance:sender;
 - (IBAction)restartInstance:sender;

@@ -112,7 +112,7 @@
     [NSApp performSelector:@selector(terminate:) withObject:nil afterDelay:0.0];
 }
 
-- (IBAction)telnet:sender {
+- (IBAction)terminal:sender {
     InterSystemsInstance *instance = [sender representedObject];
     
     NSString *instanceName = instance.name;
@@ -273,7 +273,7 @@
     NSMenuItem *portalMenuItem;
     NSMenuItem *docsMenuItem;
     NSMenuItem *referencesMenuItem;
-    NSMenuItem *telnetMenuItem;
+    NSMenuItem *terminalMenuItem;
     NSMenuItem *openDirMenuItem;
     NSMenuItem *startStopMenuItem;
     NSMenuItem *restartMenuItem;
@@ -317,12 +317,12 @@
         
         // csession submenu
         if ([InterSystemsInstance isInstanceRunning:instance]) {
-            telnetMenuItem = [subMenu addItemWithTitle:@"Telnet session" action:@selector(telnet:) keyEquivalent:@""];
+            terminalMenuItem = [subMenu addItemWithTitle:@"Terminal session" action:@selector(terminal:) keyEquivalent:@""];
         }
         else {
-            telnetMenuItem = [subMenu addItemWithTitle:@"Telnet session" action:nil keyEquivalent:@""];
+            terminalMenuItem = [subMenu addItemWithTitle:@"Terminal session" action:nil keyEquivalent:@""];
         }
-        [telnetMenuItem setRepresentedObject:instance];
+        [terminalMenuItem setRepresentedObject:instance];
         
         if ([InterSystemsInstance isInstanceRunning:instance]) {
             portalMenuItem = [subMenu addItemWithTitle:@"Management Portal" action:@selector(launchPortal:) keyEquivalent:@""];
