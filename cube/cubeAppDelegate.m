@@ -398,7 +398,7 @@
         [instancesMenu insertItem:[NSMenuItem separatorItem] atIndex:index++];
     }
     
-    toggleAutoStartAtLoginMenuItem = [instancesMenu insertItemWithTitle:@"Start at Login" action:@selector(toggleAutoStartAtLogin:) keyEquivalent:@"" atIndex:index++];
+    toggleAutoStartAtLoginMenuItem = [instancesMenu insertItemWithTitle:@"Start Cube at Login" action:@selector(toggleAutoStartAtLogin:) keyEquivalent:@"" atIndex:index++];
     LSSharedFileListRef loginItems = LSSharedFileListCreate(NULL, kLSSharedFileListSessionLoginItems, NULL);
 	if ([self loginItemExistsWithLoginItemReference:loginItems ForPath:appPath]) {
 		[toggleAutoStartAtLoginMenuItem setState:NSOnState];
