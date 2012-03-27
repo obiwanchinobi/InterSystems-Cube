@@ -140,6 +140,7 @@
     NSAppleScript* openDir = [[NSAppleScript alloc] initWithSource:
                                [NSString stringWithFormat:
                                 @"tell application \"Finder\"\n"
+                                @"  activate\n"
                                 @"  open (\"%@\" as POSIX file)\n"
                                 @"end tell", instance.dir]];
     
