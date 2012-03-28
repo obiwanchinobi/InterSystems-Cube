@@ -189,6 +189,7 @@ NSString * const Stopped = @"down";
     }
     else {
         action = @"force";
+        parameter = @"quietly";
     }
     
     //Setup the task execution
