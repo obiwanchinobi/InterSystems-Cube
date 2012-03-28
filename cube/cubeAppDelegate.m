@@ -14,7 +14,7 @@
     //Click over a template image in statusBar converts black color in white and alpha channel in blue.
     [instancesImage setTemplate:YES];
     [instancesItem setImage:instancesImage];
-    [instancesItem setToolTip:@"Manage InterSystems Instances"];
+    [instancesItem setToolTip:@"Cube - Manage InterSystems Instances"];
     [instancesItem setHighlightMode:YES];
     BOOL blessHelper = TRUE;
     NSArray *allJobs = (NSArray *)SMCopyAllJobDictionaries(kSMDomainSystemLaunchd);
