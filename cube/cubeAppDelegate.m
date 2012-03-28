@@ -6,16 +6,12 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-    NSImage *instancesImage = [NSImage imageNamed:@"cube_status.icns"];
     instancesItem = [[[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength] retain];
     
-    //Use SetTemplate to set image as template.
-    //This image should uses only black and clear colors.
-    //Click over a template image in statusBar converts black color in white and alpha channel in blue.
-    [instancesImage setTemplate:YES];
-    [instancesItem setImage:instancesImage];
+    [instancesItem setImage:[NSImage imageNamed:@"cube_blue.ico"]];
     [instancesItem setToolTip:@"Cube - Manage InterSystems Instances"];
     [instancesItem setHighlightMode:YES];
+    [instancesItem setAlternateImage:[NSImage imageNamed:@"cube_white.ico"]];
     BOOL blessHelper = TRUE;
     NSArray *allJobs = (NSArray *)SMCopyAllJobDictionaries(kSMDomainSystemLaunchd);
     for (NSDictionary *job in allJobs) {
