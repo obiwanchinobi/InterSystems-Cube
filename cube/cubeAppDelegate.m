@@ -25,8 +25,16 @@
             program = [[job objectForKey: @"ProgramArguments"] objectAtIndex: 0];
         }
         if ([label isEqualToString:@"com.InterSystems.CubeHelper"]) {
-            blessHelper = FALSE;
-            NSLog(@"Detected helper job: %@ (%@)", label, program);
+            NSFileManager *fileManager = [NSFileManager defaultManager];
+            BOOL isDir;
+            
+            if ([fileManager fileExistsAtPath:[NSString stringWithFormat:@"/Library/PrivilegedHelperTools/com.InterSystems.CubeHelper"] isDirectory:&isDir] && isDir) {
+                blessHelper = FALSE;
+                NSLog(@"Detected helper job: %@ (%@)", label, program);
+            }
+            else {
+                NSLog(@"Detected helper job '%@' but helper file '%@' does not exist!", label, program);
+            }
         }
     }
     [allJobs release];
