@@ -33,7 +33,7 @@
 	<key>SMPrivilegedExecutables</key>
 	<dict>
 		<key>com.InterSystems.CubeHelper</key>
-		<string>identifier com.InterSystems.CubeHelper and certificate leaf[subject.CN] = &quot;Joe Developer&quot;</string>
+		<string>identifier com.InterSystems.CubeHelper and certificate leaf[subject.CN] = &quot;Developer ID Application: David Tong&quot;</string>
 	</dict>
 </dict>
 </plist>
