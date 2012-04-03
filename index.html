@@ -1,117 +1,74 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset='utf-8'>
 
-  <title>obiwanchinobi/InterSystems-cube @ GitHub</title>
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Intersystems-cube : " />
 
-  <style type="text/css">
-    body {
-      margin-top: 1.0em;
-      background-color: #ffffff;
-      font-family: Helvetica, Arial, FreeSans, san-serif;
-      color: #000000;
-    }
-    #container {
-      margin: 0 auto;
-      width: 700px;
-    }
-    h1 { font-size: 3.8em; color: #2b2b2b; margin-bottom: 3px; }
-    h1 .small { font-size: 0.4em; }
-    h1 a { text-decoration: none }
-    h2 { font-size: 1.5em; color: #2b2b2b; }
-    h3 { text-align: center; color: #2b2b2b; }
-    a { color: #00A; }
-    .description { font-size: 1.2em; margin-bottom: 30px; margin-top: 30px; font-style: italic;}
-    .download { float: right; }
-    pre { background: #000; color: #fff; padding: 15px;}
-    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-    .footer { text-align:center; padding-top:30px; height:3em; font-size:12px; }
-    strong, b { font-weight: bolder;  }
-  </style>
-</head>
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
 
-<body>
-  <a href="https://github.com/obiwanchinobi/"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" /></a>
+    <title>Intersystems-cube</title>
+  </head>
 
-  <div id="container">
+  <body>
 
-    <div class="download">
-      <a href="https://github.com/obiwanchinobi/">
-        <img border="0" width="90" src="https://github.com/images/modules/download/zip.png">
-      </a>
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/obiwanchinobi/InterSystems-cube">Fork Me on GitHub</a>
+
+          <h1 id="project_title">Intersystems-cube</h1>
+          <h2 id="project_tagline"></h2>
+
+          <section id="downloads">
+            <a class="zip_download_link" href="https://github.com/obiwanchinobi/InterSystems-cube/zipball/master">Download this project as a .zip file</a>
+            <a class="tar_download_link" href="https://github.com/obiwanchinobi/InterSystems-cube/tarball/master">Download this project as a tar.gz file</a>
+          </section>
+        </header>
     </div>
 
-    <h1>
-      InterSystems-cube
-      <br/>
-      <span class="small">by <a href="https://github.com/obiwanchinobi">Dave Tong (Obiwan Chinobi)</a></span>
-    </h1>
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h3>Welcome to GitHub Pages.</h3>
 
-    <div class="description">
-      A way to manage InterSystems' OSX local-installations.
-    </div>
-    
-      <p>Built with the intent to help better manage all of your local InterSystems' Caché and Ensemble Instances.</p>
-      <h2>Features</h2>
-      <ul>
-        <li>Start/Stop/Restart Instances</li>
-        <li>Autostart an Instance on system startup</li>
-        <li>Telnet into Caché/Ensemble</li>
-        <li>Open up Management Portal</li>
-        <li>Open up directory the Instance is installed to</li>
-        <li>Open up Documentation and Class Reference</li>
-      </ul>
-    
-      <h2>Dependencies</h2>
-      <p>If you don't have InterSystems technology installed locally on OSX then perhaps you should start.</p>
-      <p>This has only been tested on Snow Leopard and Lion.</p>
-    
-      <h2>Installation Instructions</h2>
-      <ul>
-        <li>Download and unzip App</li>
-        <li>Move App to your Applications directory</li>
-        <li>Run it - this will prompt you for a password the first time you run it because it is installing a Helper Job that requires root privileges. This Helper is used for:
-          <ul>
-            <li>Starting/stopping/restarting an Instance</li>
-            <li>Managing StartupItems - requires root privileges</li>
-          </ul>
-      </ul>
-    
-      <h2>TODOs</h2>
-      <ul>
-        <li>Growl Notifications</li>
-      </ul>
-        
-      <h2>Author/Contact</h2>
-      <p>Please send all support and feature requests to <a href="mailto:david.mh.tong@gmail.com">Dave Tong</a>.</p>
-      <p>Therefore, any bug fixes and feature enhancements will occur at Dave's earliest convenience.</p>
+<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
 
-      <h2>Disclaimer</h2>
-      <p>This project is not verified by InterSystems.</p>
-    <h2>Download</h2>
-    <p>
-      You can download the App <a href="https://github.com/obiwanchinobi/">here</a>
-    </p>
+<pre><code>$ cd your_repo_root/repo_name
+$ git fetch origin
+$ git checkout gh-pages
+</code></pre>
 
-    <div class="footer">
-      Thanks to Tony, Jolyon and Simon for helping <span style="text-decoration:line-through;">breaking it and finding faults</span> with the testing!
+<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
+
+<h3>Designer Templates</h3>
+
+<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
+
+<h3>Rather Drive Stick?</h3>
+
+<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
+
+<h3>Authors and Contributors</h3>
+
+<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
+
+<h3>Support or Contact</h3>
+
+<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact support@github.com and we’ll help you sort it out.</p>
+      </section>
     </div>
 
-  </div>
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Intersystems-cube maintained by <a href="https://github.com/obiwanchinobi">obiwanchinobi</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
 
-<script type="text/javascript">
+    
 
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-30353278-1']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-
-</script>
-</body>
+  </body>
 </html>
