@@ -4,11 +4,11 @@
   <head>
     <meta charset='utf-8' />
     <meta http-equiv="X-UA-Compatible" content="chrome=1" />
-    <meta name="description" content="Intersystems-cube : " />
+    <meta name="description" content="Cube : " />
 
     <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
 
-    <title>Intersystems-cube</title>
+    <title>Cube</title>
   </head>
 
   <body>
@@ -16,14 +16,13 @@
     <!-- HEADER -->
     <div id="header_wrap" class="outer">
         <header class="inner">
-          <a id="forkme_banner" href="https://github.com/obiwanchinobi/InterSystems-cube">Fork Me on GitHub</a>
+          <a id="forkme_banner" href="https://github.com/obiwanchinobi">Fork Me on GitHub</a>
 
-          <h1 id="project_title">Intersystems-cube</h1>
-          <h2 id="project_tagline"></h2>
+          <h1 id="project_title">Cube</h1>
+          <h2 id="project_tagline">An easy way to manage your local InterSystems&#39; Cach&eacute; and Ensemble Instances installed on OS X</h2>
 
           <section id="downloads">
-            <a class="zip_download_link" href="https://github.com/obiwanchinobi/InterSystems-cube/zipball/master">Download this project as a .zip file</a>
-            <a class="tar_download_link" href="https://github.com/obiwanchinobi/InterSystems-cube/tarball/master">Download this project as a tar.gz file</a>
+            <a class="zip_download_link" href="https://github.com/obiwanchinobi/InterSystems-cube/zipball/master">Download Cube</a>
           </section>
         </header>
     </div>
@@ -31,24 +30,64 @@
     <!-- MAIN CONTENT -->
     <div id="main_content_wrap" class="outer">
       <section id="main_content" class="inner">
-        <h3>Welcome to GitHub Pages.</h3>
+        <h3>Features</h3>
 
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
+<ul>
+  <li>Start/Stop/Restart Instances</li>
+  <li>Auto-start an Instance on system start-up</li>
+  <li>Telnet to an Instance</li>
+  <li>Open up Management Portal in your web browser</li>
+  <li>Open up the directory the Instance is installed to using Finder</li>
+  <li>Open up Documentation and Class Reference in your web browser</li>
+  <li>Auto-start Cube when you login to your OS X account</li>
+</ul>
 
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
-</code></pre>
+<h3>Installing</h3>
 
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
+<ol>
+  <li>Uninstall any previous installations of Cube</li>
+  <li>Download the ZIP file and unzip contents</li>
+  <li>Telnet to an Instance</li>
+  <li>Move Cube.app into your Applications directory</li>
+  <li>Double-click Cube.app to start it</li>
+  <li>
+    You will be prompted for your password because Cube needs to install a privileged helper
+    <br/>
+    IMAGE
+  </li>
+  <li>
+    Cube should now appear in your status menu
+    <br/>
+    IMAGE
+  </li>
+</ol>
 
-<h3>Designer Templates</h3>
+<h3>Uninstalling</h3>
 
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
+<ol>
+  <li>Make sure &quot;Start Cube at Login&quot; is disabled</li>
+  <li>Quit Cube app</li>
+  <li>
+    Delete the following files in Terminal &#40;will require sudo&#41;&#58;
+    <code>/Library/PrivilegedHelperTools/com.InterSystems.CubeHelper</code>
+    <code>/Library/LaunchDaemons/com.InterSystems.CubeHelper.plist</code>
+  </li>
+  <li>Restart your system</li>
+</ol>
 
-<h3>Rather Drive Stick?</h3>
+<h3>Disclaimer</h3>
 
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
+<p>Bla bla bla</p>
+
+<h3>Troubleshooting</h3>
+
+<p>Not working for you? Before contacting Dave Tong, send him what you know from&#58;</p>
+
+<ul>
+  <li>View messages in Console.app</li>
+  <li>View StartupItems through <code>System Profiler &gt; Software &gt; Startup Items</code></li>
+  <li></li>
+</ul>
 
 <h3>Authors and Contributors</h3>
 
@@ -56,15 +95,17 @@ $ git checkout gh-pages
 
 <h3>Support or Contact</h3>
 
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact support@github.com and we’ll help you sort it out.</p>
+<p>Please send all support and feature requests to <a href="mailto:david.mh.tong@gmail.com">Dave Tong</a> and he will respond at his earliest convenience.
+
+It should be noted that Cube is a side-project so it may not be an instant response.
+</p>
       </section>
     </div>
 
     <!-- FOOTER  -->
     <div id="footer_wrap" class="outer">
       <footer class="inner">
-        <p class="copyright">Intersystems-cube maintained by <a href="https://github.com/obiwanchinobi">obiwanchinobi</a></p>
-        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+        <p class="copyright">Cube is maintained by <a href="http://about.me/davetong">Dave Tong</a></p>
       </footer>
     </div>
 
