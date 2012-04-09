@@ -24,7 +24,7 @@
             NSFileManager *fileManager = [NSFileManager defaultManager];
             BOOL isDir;
             
-            if ([fileManager fileExistsAtPath:[NSString stringWithFormat:@"/Library/PrivilegedHelperTools/com.InterSystems.CubeHelper"] isDirectory:&isDir] && isDir) {
+            if ([fileManager fileExistsAtPath:[NSString stringWithFormat:@"/Library/PrivilegedHelperTools/com.InterSystems.CubeHelper"] isDirectory:&isDir] && !isDir) {
                 blessHelper = FALSE;
                 NSLog(@"Detected helper job: %@ (%@)", label, program);
             }
@@ -49,7 +49,7 @@
             NSLog(@"Bless Error: %@",error);
             return;
         }
-        NSLog(@"Helper job does not exist - bless helper!");
+        NSLog(@"Blessed helper tool!");
     }
 
     // Connect to Helper
