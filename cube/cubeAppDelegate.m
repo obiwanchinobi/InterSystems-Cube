@@ -303,7 +303,7 @@
         [item setMixedStateImage:[NSImage imageNamed:NSImageNameStatusPartiallyAvailable]];
         
         [item setTarget:self]; // or whatever target you want
-
+        
         if ([instance.status isEqualToString: Started]) {
             [item setState:NSOnState];
         }
@@ -314,32 +314,34 @@
             [item setState:NSMixedState];
         }
         
+        // csession
+        if ([InterSystemsInstance isInstanceRunning:instance]) {
+            terminalMenuItem = [instancesMenu insertItemWithTitle:@"Terminal session" action:@selector(terminal:) keyEquivalent:@"" atIndex:index++];
+        }
+        else {
+            terminalMenuItem = [instancesMenu insertItemWithTitle:@"Terminal session" action:nil keyEquivalent:@"" atIndex:index++];
+        }
+        [terminalMenuItem setImage:[NSImage imageNamed:@"terminal.ico"]];
+        [terminalMenuItem setRepresentedObject:instance];
+        
+        if ([InterSystemsInstance isInstanceRunning:instance]) {
+            portalMenuItem = [instancesMenu insertItemWithTitle:@"Management Portal" action:@selector(launchPortal:) keyEquivalent:@"" atIndex:index++];
+        }
+        else {
+            portalMenuItem = [instancesMenu insertItemWithTitle:@"Management Portal" action:nil keyEquivalent:@"" atIndex:index++];
+        }
+        [portalMenuItem setImage:[NSImage imageNamed:@"dashboard.ico"]];
+        [portalMenuItem setRepresentedObject:instance];
+        [instancesMenu insertItem:[NSMenuItem separatorItem] atIndex:index++];
+        
+        /**************************
+         *  Start sub-menu
+         **************************/
+        
         subMenu = [[NSMenu alloc] init];
         
         // version submenu
         [subMenu addItemWithTitle:instance.version action:nil keyEquivalent:@""];
-        [subMenu addItem:[NSMenuItem separatorItem]];
-        
-        // csession submenu
-        if ([InterSystemsInstance isInstanceRunning:instance]) {
-            terminalMenuItem = [subMenu addItemWithTitle:@"Terminal session" action:@selector(terminal:) keyEquivalent:@""];
-        }
-        else {
-            terminalMenuItem = [subMenu addItemWithTitle:@"Terminal session" action:nil keyEquivalent:@""];
-        }
-        [terminalMenuItem setRepresentedObject:instance];
-        
-        if ([InterSystemsInstance isInstanceRunning:instance]) {
-            portalMenuItem = [subMenu addItemWithTitle:@"Management Portal" action:@selector(launchPortal:) keyEquivalent:@""];
-        }
-        else {
-            portalMenuItem = [subMenu addItemWithTitle:@"Management Portal" action:nil keyEquivalent:@""];
-        }
-        [portalMenuItem setRepresentedObject:instance];
-        
-        openDirMenuItem = [subMenu addItemWithTitle:@"Open Installation directory" action:@selector(openDirectory:) keyEquivalent:@""];
-        [openDirMenuItem setRepresentedObject:instance];
-        
         [subMenu addItem:[NSMenuItem separatorItem]];
         
         // start/stop submenu
@@ -394,13 +396,14 @@
             referencesMenuItem = [subMenu addItemWithTitle:@"Class Reference" action:nil keyEquivalent:@""];
         }
         [referencesMenuItem setRepresentedObject:instance];
+        [subMenu addItem:[NSMenuItem separatorItem]];
+        
+        // Open directory
+        openDirMenuItem = [subMenu addItemWithTitle:@"Open Installation directory" action:@selector(openDirectory:) keyEquivalent:@""];
+        [openDirMenuItem setRepresentedObject:instance];
         
         [instance release];
         [subMenu release];
-    }
-    
-    if (index > 1) {
-        [instancesMenu insertItem:[NSMenuItem separatorItem] atIndex:index++];
     }
     
     toggleAutoStartAtLoginMenuItem = [instancesMenu insertItemWithTitle:@"Start Cube at Login" action:@selector(toggleAutoStartAtLogin:) keyEquivalent:@"" atIndex:index++];
