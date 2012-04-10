@@ -6,10 +6,12 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
+    NSString *toolTip = [NSString stringWithFormat:@"Cube %@ - Manage InterSystems Instances", [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"]];
+    
     instancesItem = [[[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength] retain];
     
     [instancesItem setImage:[NSImage imageNamed:@"cube_blue.ico"]];
-    [instancesItem setToolTip:@"Cube - Manage InterSystems Instances"];
+    [instancesItem setToolTip:toolTip];
     [instancesItem setHighlightMode:YES];
     [instancesItem setAlternateImage:[NSImage imageNamed:@"cube_white.ico"]];
     BOOL blessHelper = TRUE;
