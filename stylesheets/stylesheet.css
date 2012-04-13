@@ -334,26 +334,11 @@ Full-Width Styles
   height:70px;
   text-indent: -5000px;
   overflow: hidden;
-  background: url(../images/sprite_download.png) no-repeat bottom left;
-}
-
-.tar_download_link {
-  display: block;
-  float: right;
-  width: 90px;
-  height:70px;
-  text-indent: -5000px;
-  overflow: hidden;
-  background: url(../images/sprite_download.png) no-repeat bottom right;
-  margin-left: 10px;
+  background:url(http://dmlb11hmvb0fr.cloudfront.net/sprite.png) no-repeat bottom left;
 }
 
 .zip_download_link:hover {
-  background: url(../images/sprite_download.png) no-repeat top left;
-}
-
-.tar_download_link:hover {
-  background: url(../images/sprite_download.png) no-repeat top right;
+  background:url(http://dmlb11hmvb0fr.cloudfront.net/sprite.png) no-repeat bottom left; background-position: 0 -647px;
 }
 
 #main_content_wrap {
@@ -429,6 +414,14 @@ Small Device Styles
 /**********************
   My Custom
 **********************/
+.sprite-Banner-white{ background:url(http://dmlb11hmvb0fr.cloudfront.net/sprite.png) no-repeat top left; background-position: 0 0; width: 130px; height: 37px; } 
+.sprite-authorisation{ background:url(http://dmlb11hmvb0fr.cloudfront.net/sprite.png) no-repeat top left; background-position: 0 -87px; width: 448px; height: 251px; } 
+.sprite-bg_hr{ background:url(http://dmlb11hmvb0fr.cloudfront.net/sprite.png) no-repeat top left; background-position: 0 -388px; width: 4px; height: 21px; } 
+.sprite-blacktocat{ background:url(http://dmlb11hmvb0fr.cloudfront.net/sprite.png) no-repeat top left; background-position: 0 -459px; width: 30px; height: 30px; } 
+.sprite-highlight-status_menu{ background:url(http://dmlb11hmvb0fr.cloudfront.net/sprite.png) no-repeat top left; background-position: 0 -539px; width: 401px; height: 58px; } 
+.sprite-sprite_download{ background:url(http://dmlb11hmvb0fr.cloudfront.net/sprite.png) no-repeat top left; background-position: 0 -647px; width: 180px; height: 140px; }
+
 .faq    { font-size:0.8em; font-weight:bold; }
 p + ul  { margin: -10px 0 0 0; }
 li code { margin:0 0 0 15px; }
+div.img { margin:0 0 0 10px; }
