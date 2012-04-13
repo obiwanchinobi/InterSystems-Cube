@@ -163,14 +163,12 @@ pre, code {
   color: #222;
   background-color: #fff;
 
-  font-family: Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal, monospace;
-  font-size: 14px;
+  font-family: "Courier", Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal, monospace;
+  font-size: 12px;
 
   border-radius: 2px;
   -moz-border-radius: 2px;
   -webkit-border-radius: 2px;
-
-
 
 }
 
@@ -183,7 +181,6 @@ pre {
 
 code {
   padding: 3px;
-  margin: 0 3px;
   box-shadow: 0 0 10px rgba(0,0,0,.1);
 }
 
@@ -328,7 +325,6 @@ Full-Width Styles
   bottom: -40px;
   right: 0;
   height: 70px;
-  background: url('../images/icon_download.png') no-repeat 0% 90%;
 }
 
 .zip_download_link {
@@ -433,4 +429,6 @@ Small Device Styles
 /**********************
   My Custom
 **********************/
-.faq  { font-size:0.8em; font-weight:bold; }
+.faq    { font-size:0.8em; font-weight:bold; }
+p + ul  { margin: -10px 0 0 0; }
+li code { margin:0 0 0 15px; }
