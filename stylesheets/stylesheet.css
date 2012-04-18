@@ -348,7 +348,6 @@ Full-Width Styles
 }
 
 #main_content {
-  padding-top: 40px;
 }
 
 #footer_wrap {
@@ -414,14 +413,12 @@ Small Device Styles
 /**********************
   My Custom
 **********************/
-.sprite-Banner-white{ background:url(http://dmlb11hmvb0fr.cloudfront.net/sprite.png) no-repeat top left; background-position: 0 0; width: 130px; height: 37px; } 
-.sprite-authorisation{ background:url(http://dmlb11hmvb0fr.cloudfront.net/sprite.png) no-repeat top left; background-position: 0 -87px; width: 448px; height: 251px; } 
-.sprite-bg_hr{ background:url(http://dmlb11hmvb0fr.cloudfront.net/sprite.png) no-repeat top left; background-position: 0 -388px; width: 4px; height: 21px; } 
-.sprite-blacktocat{ background:url(http://dmlb11hmvb0fr.cloudfront.net/sprite.png) no-repeat top left; background-position: 0 -459px; width: 30px; height: 30px; } 
-.sprite-highlight-status_menu{ background:url(http://dmlb11hmvb0fr.cloudfront.net/sprite.png) no-repeat top left; background-position: 0 -539px; width: 401px; height: 58px; } 
-.sprite-sprite_download{ background:url(http://dmlb11hmvb0fr.cloudfront.net/sprite.png) no-repeat top left; background-position: 0 -647px; width: 180px; height: 140px; }
+.sprite-Banner-white{ background:url(http://dmlb11hmvb0fr.cloudfront.net/sprite_20120418.png) no-repeat top left; background-position: 0 0; width: 130px; height: 37px; } 
+.sprite-authorisation{ background:url(http://dmlb11hmvb0fr.cloudfront.net/sprite_20120418.png) no-repeat top left; background-position: 0 -87px; width: 448px; height: 251px; } 
+.sprite-example{ background:url(http://dmlb11hmvb0fr.cloudfront.net/sprite_20120418.png) no-repeat top left; background-position: 0 -388px; width: 528px; height: 604px; } 
+.sprite-sprite_download{ background:url(http://dmlb11hmvb0fr.cloudfront.net/sprite_20120418.png) no-repeat top left; background-position: 0 -1042px; width: 180px; height: 140px; }
 
 .faq    { font-size:0.8em; font-weight:bold; }
 p + ul  { margin: -10px 0 0 0; }
 li code { margin:0 0 0 15px; }
-div.img { margin:0 0 0 10px; }
+div.img { margin:auto; }
